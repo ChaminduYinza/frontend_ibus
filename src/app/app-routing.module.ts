@@ -4,7 +4,7 @@ import { MaterialModule } from './material.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { ReportsComponent } from './TimeKeeper/reports/reports.component';
-import { ScehduleComponent } from './TimeKeeper/scehdule/scehdule.component';
+import { ScheduleComponent } from './TimeKeeper/schedule/schedule.component';
 import { LiveTrackingComponent } from './TimeKeeper/live-tracking/live-tracking.component';
 // import { AuthGuardService as AuthGuard } from './services/auth-guard-service.service';
 
@@ -17,11 +17,11 @@ const routes: Routes = [
         path: 'User', component: SideNavComponent,
         // canActivate: [AuthGuard],
         children: [
-            { path: 'Schedule', component: ScehduleComponent },
+            { path: 'Schedule', component: ScheduleComponent },
               { path: 'Reports', component: ReportsComponent },
               { path: 'Livemap', component: LiveTrackingComponent },
             //   { path: 'Delivery', component: DeliveryComponent },
-            { path: '**', component: ScehduleComponent, pathMatch: 'full' }
+            { path: '**', component: ScheduleComponent, pathMatch: 'full' }
         ]
         // , data: {
         //   expectedRole: ['admin']

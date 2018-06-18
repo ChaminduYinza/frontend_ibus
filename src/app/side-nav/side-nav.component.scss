@@ -1,3 +1,4 @@
+
 .main-container {
     display: flex;
     flex-direction: column;
@@ -6,6 +7,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    z-index : 1;
 }
 
 .app-toolbar-is-mobile .app-toolbar {
@@ -15,8 +17,7 @@
 }
 
 .mat-toolbar {
-    height: 81px;
-    // background: #0f188a;
+    height: 81px; // background: #0f188a;
     // background: linear-gradient(40deg, #000000, #056e8e);
     // background: linear-gradient(40deg, #07196f, #1c82ec);
     // background: linear-gradient(40deg, #050716, #273aba);
@@ -26,7 +27,7 @@
     padding-left: 4rem;
 }
 
-.logo-button{
+.logo-button {
     width: auto;
     height: auto;
 }
@@ -98,7 +99,7 @@
     margin-left: -23px;
 }
 
-.user-name{
+.user-name {
     margin-left: -26px;
 }
 
