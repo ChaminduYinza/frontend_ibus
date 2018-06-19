@@ -1,0 +1,33 @@
+mat-form-field {
+    font-size: 32%;
+    font-weight: 500 !important;
+    width: 50%;
+    top: -5px;
+    margin-bottom: -39px;
+}
+
+.title-text {
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin-top: -16px;
+}
+
+.card-header {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 5px; // background-color: rgb(223, 223, 223);
+    height: 35px; // background-color: #4285f4;
+    background-color: #000000; // background: linear-gradient(40deg, #4b9c6b, #000000);
+    color: white;
+    box-shadow: 0px 6px 18px -6px rgba(97, 97, 97, 1);
+}
+
+.title {
+    width: 2rem;
+    height: 1.5rem;
+    margin-top: 19px;
+}
+
+.mat-option:hover {
+    background: #0bc29a;
+}

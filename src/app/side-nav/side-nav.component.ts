@@ -32,15 +32,16 @@ export class SideNavComponent implements OnInit {
     item: "Tracking",
     routerLink: "./Livemap"
   },
-  {
-    icon: "insert_chart",
-    item: "Analytic Reports",
-    routerLink: "./Reports"
-  },
+
   {
     icon: "assignment",
     item: "Bus Schedules",
     routerLink: "./Schedule"
+  },
+  {
+    icon: "insert_chart",
+    item: "Analytic Reports",
+    routerLink: "./Reports"
   },
   {
     icon: "assignment",
