@@ -35,10 +35,10 @@
             ],
             "scripts": [
               "node_modules/chart.js/dist/Chart.js",
-              "node_modules/hammerjs/hammer.min.js",
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
-              "node_modules/echarts/dist/echarts.min.js" 
+              "node_modules/hammerjs/hammer.min.js",
+              "node_modules/echarts/dist/echarts.min.js"
             ]
           },
           "configurations": {

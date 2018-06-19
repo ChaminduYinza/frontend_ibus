@@ -31,8 +31,8 @@ import { WarningListComponent } from './TimeKeeper/reports/widgets/tables/warnin
     ],
     imports: [
         BrowserModule,
-        MDBBootstrapModule.forRoot(),
         MalihuScrollbarModule.forRoot(),
+        MDBBootstrapModule.forRoot(),
         BrowserAnimationsModule,
         MaterialModule,
         AppRoutingModule,
