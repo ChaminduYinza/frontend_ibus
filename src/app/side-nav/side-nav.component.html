@@ -1,4 +1,4 @@
-<div class="main-container" [class.app-toolbar-is-mobile]="mobileQuery.matches">
+<div class="main-container index" [class.app-toolbar-is-mobile]="mobileQuery.matches">
 
   <mat-toolbar class="app-toolbar">
     <button mat-icon-button (click)="snav.toggle()" class="logo-button">
@@ -45,7 +45,7 @@
       </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content class="app-sidevav-content">
+    <mat-sidenav-content malihu-scrollbar [scrollbarOptions]="scrollbarOptions"  class="app-sidevav-content">
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

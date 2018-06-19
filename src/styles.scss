@@ -1,7 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 div {
-    font-family: 'Rajdhani';font-size: 22px;
+    font-family: 'Rajdhani';font-size: 110%;
 }
+
+.mat-option {
+    font-family: 'Rajdhani';
+    font-size: 80% !important;
+}
+
+
+.mat-tooltip  {
+   font-size: 60% !important;
+   font-family: 'Rajdhani';
+   }

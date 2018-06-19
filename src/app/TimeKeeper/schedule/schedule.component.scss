@@ -1,0 +1,35 @@
+.table-heading {
+    background-color: rgb(24, 22, 22);
+    color: white;
+    margin-bottom: -1px;
+    text-align: center;
+    font-size: 96%
+}
+
+.schedule-container {
+    margin-top: 37px;
+}
+
+th {
+    font-weight: bold;
+    font-size: 80% !important;
+}
+
+table,
+td {
+    font-size: 75%;
+}
+
+.mat-option:hover {
+    background: #0bc29a;
+}
+
+.mat-option {
+    font-size: 65% !important;
+}
+
+mat-form-field {
+    font-size: 48%;
+    width: 100%;
+    font-weight: 1000 !important;
+}

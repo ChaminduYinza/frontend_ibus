@@ -1,0 +1,113 @@
+agm-map {
+    height: 300px;
+}
+
+.map-container {
+    margin-top: 37px;
+}
+
+.overlay .mask {
+    z-index: -1 !important;
+}
+
+.checkbox-teal [type="checkbox"]:checked+label:before {
+    border-color: transparent #009688 #009688 transparent;
+}
+
+.checkbox-label {
+    font-size: 1.5rem;
+}
+
+.checkbox-teal {
+    margin-left: 1.6rem;
+    margin-bottom: 0.7rem;
+}
+
+.margin {
+    margin-left: 3rem;
+    width: 26%
+}
+
+.mat-option:hover {
+    background: #0bc29a;
+    ;
+}
+
+.fadeEffect {
+    -webkit-animation: fadeinout 2s linear forwards;
+    animation: fadeinout 2s linear forwards;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes fadeinout {
+    100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeinout {
+    100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.on-going {
+    cursor: pointer;
+    color: #00c851;
+    margin: 20px;
+    margin-bottom: 0px !important;
+    font-size: 1.2rem; // font-weight: bold;
+}
+
+.idle {
+    cursor: pointer;
+    color: #f7971d;
+    margin: 20px;
+    margin-bottom: 0px !important;
+    font-size: 1.2rem; // font-weight: bold;
+}
+
+.not-functioning {
+    cursor: pointer;
+    color: #f44336;
+    margin: 20px;
+    margin-bottom: 0px !important; // font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.indicators {
+    overflow: hidden;
+    text-align: center; // margin-right: 50px;
+}
+
+.card-body {
+    padding-top: 0px !important;
+}
+
+.speed-meter {
+    width: 33px;
+    margin-left: 4rem;
+    margin-right: 9px;
+    margin-bottom: 1rem;
+
+}
+.speed-div{
+    margin-top: 1rem;
+    font-size: 150% !important;
+}
+
+.button-group-manage {
+    margin-left: 1.3rem;
+    margin-top: 2rem;
+}
+
+div{
+    font-size: 95% !important;
+}

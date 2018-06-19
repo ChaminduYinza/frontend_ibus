@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
 export class SideNavComponent implements OnInit {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
-  public scrollbarOptions1 = { axis: 'y', theme: 'light-thin' };
+  public scrollbarOptions = { axis: "y", theme: "dark-thin" };
 
-  constructor(private router: Router, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) { 
+  constructor(private router: Router, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 700px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -45,7 +45,7 @@ export class SideNavComponent implements OnInit {
   {
     icon: "assignment",
     item: "Generate Schedules",
-    routerLink: "./Chairs"
+    routerLink: "./GenerateSchedule"
   },
   {
     icon: "account_circle",
@@ -58,5 +58,5 @@ export class SideNavComponent implements OnInit {
     routerLink: "./Settings"
   }
   ]
-  
+
 }

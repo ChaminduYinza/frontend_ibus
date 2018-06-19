@@ -1,5 +1,5 @@
 {
-  "name": "i-bus",
+  "name": "ibus",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -28,6 +28,7 @@
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
+    "ngx-malihu-scrollbar": "^1.3.2",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
