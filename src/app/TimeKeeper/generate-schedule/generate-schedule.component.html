@@ -1,3 +1,87 @@
-<p>
-  generate-schedule works!
-</p>
+<div class="schedule-container">
+  <div class="col-md-12">
+
+    <!--Card-->
+    <div class="card card-cascade narrower">
+
+      <div class="view overlay hm-white-slight waves-light " mdbWavesEffect>
+        <h1 class="table-heading">Generate Schedule</h1>
+
+      </div>
+
+
+
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <form [formGroup]="SceduleForm">
+              <div class="md-form">
+                <mat-form-field class="margin">
+                  <mat-select placeholder="Route Number">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let route of routes" [value]="route">{{route}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="form-check radio-green-gap">
+                <input name="group2" type="radio" class="with-gap" id="radio4">
+                <label class="radio-label" for="radio4">Generate For Specific Time Slot</label>
+                <input name="group2" type="radio" class="with-gap" id="radio5">
+                <label class="radio-label" for="radio5">Generate For The Whole Day</label>
+              </div>
+
+
+              <div class="md-form">
+                <i class="fa fa-clock-o prefix grey-text"></i>
+                <input type="text" id="SceduleFormTimeSlot" formControlName="SceduleFormTimeSlot" class="form-control" mdbInputDirective>
+                <label for="SceduleFormTimeSlot">Time Slot</label>
+              </div>
+              <div class="md-form">
+                <i class="fa fa-arrows-h prefix grey-text"></i>
+                <input type="number" id="SceduleFormFixedInterval" formControlName="SceduleFormFixedInterval" class="form-control" mdbInputDirective>
+                <label for="SceduleFormFixedInterval">Fixed Interval</label>
+              </div>
+              <div class="md-form">
+                <i class="fa fa-bus prefix grey-text"></i>
+                <input type="number" id="SceduleFormnumberOfBusses" formControlName="SceduleFormnumberOfBusses" class="form-control" mdbInputDirective>
+                <label for="SceduleFormnumberOfBusses">Number Of Busses</label>
+              </div>
+              <div class="md-form">
+                <i class="fa fa-list-alt prefix grey-text"></i>
+                <input type="number" id="SceduleFormBusArray" formControlName="SceduleFormBusArray" class="form-control" mdbInputDirective>
+                <label for="SceduleFormBusArray">Bus List ID</label>
+              </div>
+
+              <!-- <div class="text-center">
+                <button class="btn btn-unique waves-light" mdbWavesEffect>Send
+                  <i class="fa fa-paper-plane-o ml-1"></i>
+                </button>
+              </div> -->
+            </form>
+            <!-- contact form -->
+
+
+            <!-- <mat-form-field class="margin">
+              <mat-select placeholder="Route Number">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let route of routes" [value]="route">{{route}}</mat-option>
+              </mat-select>
+            </mat-form-field> -->
+
+
+          </div>
+        </div>
+
+        <a class="btn btn-unique waves-light" mdbWavesEffect>Generate New Schedule</a>
+        <!-- <a class="btn btn-unique waves-light" mdbWavesEffect>Print Shedule</a> -->
+
+        <!-- <a class="btn btn-unique waves-light" mdbWavesEffect>Button</a> -->
+      </div>
+      <!--/.Card content-->
+
+    </div>
+    <!--/.Card-->
+
+  </div>
+</div>

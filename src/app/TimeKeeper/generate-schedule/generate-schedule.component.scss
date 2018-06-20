@@ -1,0 +1,53 @@
+.table-heading {
+    background-color: rgb(24, 22, 22);
+    color: white;
+    margin-bottom: -1px;
+    text-align: center;
+    font-size: 96%
+}
+
+.schedule-container {
+    margin-top: 37px;
+}
+
+.mat-option:hover {
+    background: #0bc29a;
+}
+
+.mat-option {
+    font-size: 55% !important;
+}
+
+mat-form-field {
+    font-size: 45%;
+    width: 100%; // font-weight: 1000 !important;
+}
+
+.radio-green [type="radio"]:checked+label:after {
+    border-color: #00C851;
+    background-color: #00C851;
+}
+
+.radio-label {
+    margin-right: 2% !important;
+    font-size: 50%;
+}
+
+/*Gap*/
+
+.form-check {
+    margin-left: -1.3%;
+}
+
+.with-gap {
+    margin-right: 3px;
+}
+
+.radio-green-gap [type="radio"].with-gap:checked+label:before {
+    border-color: #00C851;
+}
+
+.radio-green-gap [type="radio"]:checked+label:after {
+    border-color: #00C851;
+    background-color: #00C851;
+}
