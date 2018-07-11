@@ -16,6 +16,7 @@ import { GenerateScheduleComponent } from './TimeKeeper/generate-schedule/genera
 import { NgxEchartsModule } from "ngx-echarts";
 import { BusStatusComponent } from './TimeKeeper/reports/widgets/pie-charts/bus-status/bus-status.component';
 import { WarningListComponent } from './TimeKeeper/reports/widgets/tables/warning-list/warning-list.component';
+import { AgmDirectionModule } from 'agm-direction'
 
 @NgModule({
     declarations: [
@@ -39,7 +40,8 @@ import { WarningListComponent } from './TimeKeeper/reports/widgets/tables/warnin
         NgxEchartsModule,
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyDN6xOeAcpl6eRmbgtccJ36KiSRXKa6X04'
-        })
+        }),
+        AgmDirectionModule      
 
     ],
     schemas: [NO_ERRORS_SCHEMA],

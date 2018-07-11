@@ -1,5 +1,5 @@
 <div class="map-container">
-    <div >
+    <div>
         <div class="col-md-12">
 
             <!--Card-->
@@ -7,8 +7,16 @@
 
                 <!--Card image-->
                 <div class="view overlay hm-white-slight waves-light" mdbWavesEffect>
-                    <agm-map [latitude]="lat" [longitude]="lng">
+                    <agm-map [zoom]="zoom" [latitude]="lat" [longitude]="lng">
                         <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                        <!-- <agm-polyline [editable]="true">
+                            <agm-polyline-point *ngFor="let data of lines" [latitude]="data.lat" [longitude]="data.lng">
+                            </agm-polyline-point>
+                        </agm-polyline> -->
+                        <agm-direction [waypoints]="waypoints" [origin]="origin" [destination]="destination" [renderOptions]="renderOptions" >
+                        </agm-direction>
+                        <!-- <agm-direction [origin]="origin" [destination]="destination">
+                        </agm-direction> -->
                     </agm-map>
                     <a>
                         <div class="mask"></div>
