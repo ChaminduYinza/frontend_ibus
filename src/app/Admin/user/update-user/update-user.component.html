@@ -1,0 +1,96 @@
+<div class="schedule-container" style="margin-top:30px;">
+    <div class="col-md-12">
+  
+      <!--Card-->
+      <div class="card card-cascade narrower">
+  
+        <div class="view overlay hm-white-slight waves-light " mdbWavesEffect>
+          <h1 class="table-heading" style="font-size:200%">Edit Account</h1>
+  
+        </div>
+  
+  
+  
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <form [formGroup]="userEditForm" class="border border-light p-5">
+                <!-- <div class="md-form">
+                      <mat-form-field class="margin">
+                        <mat-select placeholder="Route Number">
+                          <mat-option>None</mat-option>
+                          <mat-option *ngFor="let route of routes" [value]="route">{{route}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div> -->
+  
+                <!-- <div class="form-check radio-green-gap">
+                      <input name="group2" type="radio" class="with-gap" id="radio4">
+                      <label class="radio-label" for="radio4">Generate For Specific Time Slot</label>
+                      <input name="group2" type="radio" class="with-gap" id="radio5">
+                      <label class="radio-label" for="radio5">Generate For The Whole Day</label>
+                    </div> -->
+                <div class="row">
+                  <div class="md-form col-md-6">
+                    <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                    <input type="text" id="firstName" formControlName="firstName" class="form-control" mdbInputDirective>
+                    <label for="firstName">Firstname</label>
+                  </div>
+                  <div class="md-form col-md-6">
+                    <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                    <input type="text" id="lastName" formControlName="lastName" class="form-control" mdbInputDirective>
+                    <label for="lastName">Lastname</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="md-form col-md-6">
+                    <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                    <input type="text" id="email" formControlName="email" class="form-control" mdbInputDirective readonly>
+                    <label for="email">Email</label>
+                  </div>
+                  <div class="md-form col-md-6">
+                    <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                    <input type="text" id="contactNo" formControlName="contactNo" class="form-control" mdbInputDirective>
+                    <label for="contactNo">Contact No</label>
+                  </div>
+                </div>
+                <!-- <div class="row">
+                  <div class="md-form col-md-6"> -->
+                    <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                    <!-- <input type="text" id="password" formControlName="password" class="form-control" mdbInputDirective>
+                    <label for="password">Password</label>
+                  </div> -->
+                  <!-- <div class="md-form col-md-6">
+                    <div class="custom-control custom-radio">
+                      <input type="radio" class="custom-control-input" id="defaultUnchecked" formControlName="status" name="status" value="true"
+                        mdbInputDirective>
+                      <label class="custom-control-label" for="defaultUnchecked">Active</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                      <input type="radio" class="custom-control-input" id="defaultChecked" formControlName="status" name="status"  value="false"
+                        mdbInputDirective>
+                        <label class="custom-control-label" for="defaultChecked">Deactive</label>
+                    </div>
+                  </div> -->
+                <!-- </div> -->
+                <button mdbWavesEffect type="submit" (click)="editUser()" class="btn btn-unique waves-light"
+                  [disabled]="!userEditForm.valid">Save</button>
+                  <a routerLink="/Admin/ChangePassword" style="font-weight:600"> Change Password</a>
+              </form>
+  
+  
+            </div>
+          </div>
+  
+  
+          <!-- <a class="btn btn-unique waves-light" mdbWavesEffect>Print Shedule</a> -->
+  
+          <!-- <a class="btn btn-unique waves-light" mdbWavesEffect>Button</a> -->
+        </div>
+        <!--/.Card content-->
+  
+      </div>
+      <!--/.Card-->
+  
+    </div>
+  </div>

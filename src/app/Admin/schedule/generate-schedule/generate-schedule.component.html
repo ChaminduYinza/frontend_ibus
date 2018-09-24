@@ -1,0 +1,154 @@
+<div class="container" style="margin-top:35px">
+  <div class="col-md-12">
+
+    <div class="card card-cascade narrower">
+      <!--Panel-->
+      <div class="view overlay hm-white-slight waves-light " mdbWavesEffect>
+        <h1 class="table-heading" style="font-size:200%">Generate Schedule</h1>
+        <a>
+          <div class="mask"></div>
+        </a>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6" style="font-weight:600">
+            <form [formGroup]="scheduleForm">
+              <div class="d-flex">
+                <label for="generation"  style="margin-right:15px">Generation</label>
+                <span class="font-weight-bold indigo-text mr-2">1</span>
+                <div class="range-field w-75">
+                  <input type="range" id="generation" formControlName="generation" class="form-control custom-range"
+                  min="0" max="1000" step="50">
+                </div>
+                <span class="font-weight-bold indigo-text ml-2">1000</span>
+              </div>
+              <div class="d-flex">
+                <label for="population" style="margin-right:15px">Population</label>
+                <span class="font-weight-bold indigo-text mr-2">1</span>
+                <div class="range-field w-75">
+                  <input type="range" id="population" formControlName="population" class="form-control custom-range"
+                  min="0" max="100" step="10">
+                </div>
+                <span class="font-weight-bold indigo-text ml-2">100</span>
+              </div>
+              <div class="d-flex">
+                <label for="crossover" style="margin-right:15px">Crossover</label>
+                <span class="font-weight-bold indigo-text mr-2">0</span>
+                <div class="range-field w-75">
+                  <input type="range" id="crossover" formControlName="crossover" class="form-control custom-range"
+                  min="0" max="1" step="0.1">
+                </div>
+                <span class="font-weight-bold indigo-text ml-2">1</span>
+              </div>
+              <div class="d-flex">
+                <label for="mutation" style="margin-right:15px">Mutation</label>
+                <span class="font-weight-bold indigo-text mr-2">0</span>
+                <div class="range-field w-75">
+                    <input type="range" id="mutation" formControlName="mutation" class="form-control custom-range"
+                    min="0" max="1" step="0.01">
+                </div>
+                <span class="font-weight-bold indigo-text ml-2">1</span>
+              </div>
+              <input class="form-check-input" type="checkbox" id="checkbox11">
+              <label class="form-check-label" for="checkbox11">Use Recommended settings</label>
+              <div class="row">
+                <div class="col">
+                  <label for="form2">Start time</label>
+                  <input type="time" id="startTime" class="form-control form-control-sm" formControlName="startTime">
+
+                </div>
+                <div class="col">
+                  <label for="form3">End Time</label>
+                  <input type="time" id="endTime" formControlName="endTime" class="form-control form-control-sm">
+
+                </div>
+              </div>
+              <div class="row" style="margin-top:15px">
+                <div class="col">
+                  <label for="form3">Set Interval :</label>
+                </div>
+                <div class="col">
+                  <input mdbInputDirective type="number" min="5" id="interval" formControlName="interval" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="row" style="margin-top:15px">
+                <div class="col">
+                  <label for="form3">Select Route :</label>
+                </div>
+                <div class="col">
+                  <input mdbInputDirective type="text" id="route" formControlName="route" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="row" style="margin-top:15px">
+                <div class="col">
+                  <label for="form3">Allocate Bus :</label>
+                </div>
+                <div class="col">
+                  <input mdbInputDirective type="text" id="buses" formControlName="buses" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="row" style="margin-top:15px">
+                <div class="col">
+                  <button type="submit" class="btn btn-unique waves-light  btn-md" [disabled]="!scheduleForm.valid" (click)="generateSchedule()">Generate</button>
+                  <button type="button" class="btn btn-outline-primary btn-md" mdbWavesEffect><b>Reset</b></button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+          <div class="col-md-6" style="font-size: 130%;font-weight: 600">
+            <div style="display: block">
+              <canvas mdbChart [chartType]="chartType" [datasets]="chartDatasets" [labels]="chartLabels" [colors]="chartColors"
+                [options]="chartOptions" [legend]="true" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+              </canvas>
+            </div>
+            <div class="row">
+              <div class="col">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col">Best Fitness Score: 50.99</th>
+                      <th scope="col">Allocated Buses</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">3</th>
+                      <th>[YK-24524],
+                        [GD-2424],
+                        [WE-2424]
+                      </th>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <th>[YK-24524],
+                        [GD-2424],
+                        [WE-2424]
+                      </th>
+                    </tr>
+                    <tr>
+                      <th scope="row">1</th>
+                      <th>[YK-24524],
+                        [GD-2424],
+                      </th>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row" style="margin-top:15px">
+              <div class="col">
+                <button type="button" class="btn btn-unique waves-light  btn-md">Add to Schedule</button>
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <!--/.Panel-->
+    </div>
+  </div>
+</div>

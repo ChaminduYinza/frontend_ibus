@@ -1,0 +1,57 @@
+<div class="schedule-container" style="margin-top:30px;">
+  <div class="col-md-12">
+
+    <!--Card-->
+    <div class="card card-cascade narrower">
+
+      <div class="view overlay hm-white-slight waves-light " mdbWavesEffect>
+        <h1 class="table-heading" style="font-size:200%">Add Route</h1>
+
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <form [formGroup]="routeForm" class="border border-light p-5">
+              <div class="row">
+                <div class="md-form col-md-6">
+                  <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                  <input type="text" id="route_no" formControlName="route_no" class="form-control" mdbInputDirective>
+                  <label for="route_no">Route No</label>
+                </div>
+                <div class="md-form col-md-6">
+                  <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                  <!-- <input type="text" id="busType" formControlName="busType" class="form-control" mdbInputDirective>
+                  <label for="busType">Bus type</label> -->
+                </div>
+              </div>
+              <div class="row">
+                <div class="md-form col-md-6">
+                  <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                  <input type="text" id="route_from" formControlName="route_from" class="form-control" mdbInputDirective>
+                  <label for="route_from">From</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="md-form col-md-6">
+                  <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                  <input type="text" id="route_to" formControlName="route_to" class="form-control"
+                    mdbInputDirective>
+                  <label for="route_to">To</label>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="md-form col-md-6">
+                  <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                  <input type="text" id="noOfSeats" formControlName="noOfSeats" class="form-control" mdbInputDirective>
+                  <label for="noOfSeats">Stations</label>
+                </div>
+              </div>
+              <button mdbWavesEffect type="submit" (click)="addBus()" class="btn btn-unique waves-light" [disabled]="!routeForm.valid">Save</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
