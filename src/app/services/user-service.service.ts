@@ -3,7 +3,7 @@ import { ApiService } from './api-service.service';
 import { Observable, pipe } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { JwtService } from './jwt-service.service';
-
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable()
 export class UserService {
   public isLogged = false;
@@ -117,5 +117,22 @@ export class UserService {
     this.jwtService.destroyToken();
 
     this.isLogged = false;
+  }
+
+  // Get details of currenntly logged-in user
+  getLoggedInUser() {
+    const localToken = this.jwtService.getToken()
+
+    if (!localToken) {
+      return null;
+    }
+    const helper = new JwtHelperService();
+    // Decode JWT token
+    const decodedToken = helper.decodeToken(localToken);
+    return {
+      'loggedInUserId': decodedToken['id'],
+      'loggedInUserEmail': decodedToken['username'],
+      'loggedInUserRole': decodedToken['role']
+    };
   }
 }

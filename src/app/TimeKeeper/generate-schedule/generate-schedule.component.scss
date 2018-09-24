@@ -3,7 +3,7 @@
     color: white;
     margin-bottom: -1px;
     text-align: center;
-    font-size: 96%
+    font-size: 170%;
 }
 
 .schedule-container {
@@ -15,11 +15,11 @@
 }
 
 .mat-option {
-    font-size: 55% !important;
+    // font-size: 110% !important;
 }
 
 mat-form-field {
-    font-size: 45%;
+    // font-size: 45%;
     width: 100%; // font-weight: 1000 !important;
 }
 
@@ -29,8 +29,7 @@ mat-form-field {
 }
 
 .radio-label {
-    margin-right: 2% !important;
-    font-size: 50%;
+    margin-right: 2% !important; // font-size: 50%;
 }
 
 /*Gap*/
