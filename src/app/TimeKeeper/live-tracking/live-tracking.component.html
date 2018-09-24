@@ -1,14 +1,12 @@
 <div class="map-container">
     <div>
         <div class="col-md-12">
-
             <!--Card-->
             <div class="card card-cascade narrower">
-
                 <!--Card image-->
                 <div class="view overlay hm-white-slight waves-light" mdbWavesEffect>
-                    <agm-map [mapTypeControl]="false" [maxZoom]="zoom" [minZoom]="zoom" [zoomControl]="false" [disableDefaultUI]="true" [styles]="styles"
-                        [zoom]="zoom" [latitude]="lat" [longitude]="lng">
+                    <agm-map [minZoom]="zoom" [zoomControl]="true" [styles]="styles" [zoom]="zoom" [latitude]="latitude" [longitude]="longitude"
+                        [usePanning]="true">
 
                         <agm-marker [iconUrl]="marker.icon" *ngFor="let marker of markers; let i = index" [latitude]="marker.lat" [longitude]="marker.lng">
                         </agm-marker>

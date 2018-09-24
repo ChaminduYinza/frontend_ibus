@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ScheduleServiceService } from '../../services/schedule-service.service';
+import { RouteServiceService } from '../../services/route-service.service';
 
 @Component({
   selector: 'app-schedule',
@@ -6,15 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./schedule.component.scss']
 })
 export class ScheduleComponent implements OnInit {
-  routes = [
-    '120 - Colombo - Horana',
-    '120 - Colombo - Kesbewa',
-    '138 - Colombo - Kottawa',
-    '157 - Piliyandala - Madapatha'
-  ];
-  constructor() { }
+  routes = [];
+  allocation: any;
+  constructor(private scheduleService: ScheduleServiceService, private routeService: RouteServiceService) { }
 
   ngOnInit() {
+    this.routeService.getRoutes().subscribe((data) => {
+      this.routes = data.data;
+    })
   }
 
+  onChange(event) {
+    console.log(new Date())
+
+    this.scheduleService.getSchedule({ route: event.value, date: "2018-09-24 " }).subscribe((data) => {
+      console.log(data.data[0].allocation)
+      this.allocation = data.data[0].allocation;
+    })
+  }
 }

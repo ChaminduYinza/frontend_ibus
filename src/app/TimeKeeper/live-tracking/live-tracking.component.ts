@@ -10,9 +10,9 @@ import { config } from '../../../../config/config'
 export class LiveTrackingComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   public scrollbarOptions = { axis: "y", theme: "dark-thin" };
-  lat: number = 6.91451;
-  lng: number = 79.97214;
-  zoom: number = 13;
+  latitude: number = 8.5922;
+  longitude: number = 81.19679580000002;
+  zoom: number = 14;
   public origin: {}
   public destination: {}
   public renderOptions: any
@@ -31,10 +31,8 @@ export class LiveTrackingComponent implements OnInit, OnDestroy {
     locationService.SendUserID("Yinza");
   }
   routes = [
-    '120 - Colombo - Horana',
-    '120 - Colombo - Kesbewa',
-    '138 - Colombo - Kottawa',
-    '157 - Piliyandala - Madapatha'
+    '17 - Panadura - Nuwara',
+    '120 - Colombo - Kesbewa'
   ];
   busids = [
     'B001',

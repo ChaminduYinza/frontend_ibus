@@ -1,6 +1,6 @@
 export const config = {
   production: false,
-  api_url: 'http://localhost:5000/api',
+  api_url: 'http://192.168.8.102:5000/api',
   image_upload_url: "http://localhost:5200/api/image/upload",
   image_load_url: "http://localhost:5200/uploads/",
   file_upload_URL: "http://localhost:5200/api/file/upload",
@@ -76,36 +76,11 @@ export const config = {
       ]
     },
     {
-      "featureType": "administrative.neighborhood",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "poi",
-      "elementType": "labels.text",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
       "featureType": "poi",
       "elementType": "labels.text.fill",
       "stylers": [
         {
           "color": "#757575"
-        }
-      ]
-    },
-    {
-      "featureType": "poi.business",
-      "stylers": [
-        {
-          "visibility": "off"
         }
       ]
     },
@@ -147,24 +122,6 @@ export const config = {
     },
     {
       "featureType": "road",
-      "elementType": "labels",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "road",
-      "elementType": "labels.icon",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "road",
       "elementType": "labels.text.fill",
       "stylers": [
         {
@@ -182,29 +139,11 @@ export const config = {
       ]
     },
     {
-      "featureType": "road.arterial",
-      "elementType": "labels",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
       "featureType": "road.highway",
       "elementType": "geometry",
       "stylers": [
         {
           "color": "#3c3c3c"
-        }
-      ]
-    },
-    {
-      "featureType": "road.highway",
-      "elementType": "labels",
-      "stylers": [
-        {
-          "visibility": "off"
         }
       ]
     },
@@ -219,26 +158,10 @@ export const config = {
     },
     {
       "featureType": "road.local",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "road.local",
       "elementType": "labels.text.fill",
       "stylers": [
         {
           "color": "#616161"
-        }
-      ]
-    },
-    {
-      "featureType": "transit",
-      "stylers": [
-        {
-          "visibility": "off"
         }
       ]
     },
@@ -252,20 +175,41 @@ export const config = {
       ]
     },
     {
-      "featureType": "water",
-      "elementType": "geometry",
+      "featureType": "transit.station.bus",
+      "elementType": "geometry.fill",
       "stylers": [
         {
-          "color": "#000000"
+          "visibility": "on"
+        }
+      ]
+    },
+    {
+      "featureType": "transit.station.bus",
+      "elementType": "labels.icon",
+      "stylers": [
+        {
+          "visibility": "simplified"
+        }
+      ]
+    },
+    {
+      "featureType": "transit.station.bus",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#ff0000"
+        },
+        {
+          "visibility": "on"
         }
       ]
     },
     {
       "featureType": "water",
-      "elementType": "labels.text",
+      "elementType": "geometry",
       "stylers": [
         {
-          "visibility": "off"
+          "color": "#000000"
         }
       ]
     },
