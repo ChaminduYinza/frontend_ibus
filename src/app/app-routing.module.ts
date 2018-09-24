@@ -16,7 +16,7 @@ import { UpdateBusComponent } from './Admin/bus/update-bus/update-bus.component'
 import { BusComponent } from './Admin/bus/bus.component';
 import { ScheduleAdminComponent } from './Admin/schedule/schedule.component';
 import { GenerateScheduleAdminComponent } from './Admin/schedule/generate-schedule/generate-schedule.component';
-import {AddRouteComponent} from './Admin/bus-route/add-route/add-route.component'
+import { AddRouteComponent } from './Admin/bus-route/add-route/add-route.component'
 
 // import { AuthGuardService as AuthGuard } from './services/auth-guard-service.service';
 
@@ -53,7 +53,7 @@ const routes: Routes = [
             { path: 'Buses', component: BusComponent },
             { path: 'Schedule', component: ScheduleAdminComponent },
             { path: 'GenerateSchedule', component: GenerateScheduleAdminComponent },
-            {path: 'AddRoute',component :AddRouteComponent},
+            { path: 'AddRoute', component: AddRouteComponent },
 
         ]
         // , data: {
