@@ -37,6 +37,17 @@ export class UserService {
           throw (res);
         }));
   }
+  updateUser(user_id): Observable<any> {
+    return this.apiService.post('/user/update', user_id)
+      .pipe(map(
+        data => {
+          return data;
+        }
+      ),
+        catchError(res => {
+          throw (res);
+        }));
+  }
 
   //change current passsword to new password
   changePassword(credentials): Observable<any> {
@@ -53,8 +64,8 @@ export class UserService {
   }
 
   //Get all users based on role
-  getUsers(role): Observable<any> {
-    return this.apiService.post('/user/user', role)
+  getUsers(): Observable<any> {
+    return this.apiService.get('/user/users')
       .pipe(map(
         data => {
           return data;
@@ -83,7 +94,7 @@ export class UserService {
     return this.apiService.post('/user/getUser', user_id)
       .pipe(map(
         data => {
-          this.setAuth(data);
+          // this.setAuth(data);
           return data;
         }
       ),

@@ -1,0 +1,72 @@
+<div class="schedule-container" style="margin-top:30px;">
+  <div class="col-md-12">
+
+    <!--Card-->
+    <div class="card card-cascade narrower">
+
+      <div class="view overlay hm-white-slight waves-light " mdbWavesEffect>
+        <h1 class="table-heading" style="font-size:200%">Add Bus</h1>
+
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <form [formGroup]="busForm" class="border border-light p-5">
+              <div class="row">
+                <div class="md-form col-md-6">
+                  <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                  <input type="text" id="busNo" formControlName="busNo" class="form-control" mdbInputDirective>
+                  <label for="busNo">Bus No</label>
+                </div>
+                <div class="md-form col-md-6">
+                  <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                  <input type="text" id="busType" formControlName="busType" class="form-control" mdbInputDirective>
+                  <label for="busType">Bus type</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="md-form col-md-6">
+                  <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                  <input type="text" id="owner" formControlName="owner" class="form-control" mdbInputDirective>
+                  <label for="owner">Owner</label>
+                </div>
+                <div class="md-form col-md-6">
+                  <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                  <input type="text" id="ownerContactNo" formControlName="ownerContactNo" class="form-control"
+                    mdbInputDirective>
+                  <label for="ownerContactNo">Owner Contact No</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="md-form col-md-6">
+                  <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                  <input type="text" id="noOfSeats" formControlName="noOfSeats" class="form-control" mdbInputDirective>
+                  <label for="noOfSeats">No Of Seats</label>
+                </div>
+                <div class="md-form col-md-6">
+                  <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                  <input type="text" id="routeNo" formControlName="routeNo" class="form-control" mdbInputDirective>
+                  <label for="routeNo">Route No</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="md-form col-md-6">
+                  <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                  <input type="text" id="driver" formControlName="driver" class="form-control" mdbInputDirective>
+                  <label for="driver">Driver</label>
+                </div>
+                <div class="md-form col-md-6">
+                  <!-- <i class="fa fa-user prefix grey-text"></i> -->
+                  <input type="text" id="driverContactNo" formControlName="driverContactNo" class="form-control"
+                    mdbInputDirective>
+                  <label for="driverContactNo">Driver Contact No</label>
+                </div>
+              </div>
+              <button mdbWavesEffect type="submit" (click)="addBus()" class="btn btn-unique waves-light" [disabled]="!busForm.valid">Save</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

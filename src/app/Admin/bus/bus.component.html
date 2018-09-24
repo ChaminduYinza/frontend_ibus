@@ -1,0 +1,63 @@
+<div class="container" style="margin-top:35px">
+  <div class="col-md-12">
+
+      <div class="card card-cascade narrower">
+          <!--Panel-->
+          <div class="view overlay hm-white-slight waves-light " mdbWavesEffect>
+              <h1 class="table-heading" style="font-size:200%">Bus List</h1>
+              <a>
+                  <div class="mask"></div>
+              </a>
+          </div>
+          <!-- <h3 class="card-header mdb-color lighten-2 white-text">User List</h3> -->
+          <div class="card-body border border-light" style="margin: 15px;">
+              <div class="row">
+                  <div class="col">
+                      <a routerLink="/Admin/AddBus"><button mdbBtn type="button"  class="btn btn-unique" style="margin-top: 30px;"
+                          mdbWavesEffect>New Bus</button></a>
+                  </div>
+                  <div class="col">
+                      <form class="form-inline md-form mr-auto" style="margin-left:15px">
+                          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                          <button class="btn btn-unique btn-rounded btn-sm my-0 waves-light" mdbWavesEffect
+                              type="submit">Search</button>
+                      </form>
+                  </div>
+              </div>
+              <table class="table table-striped">
+                  <thead>
+                      <tr>
+                          <th>Bus no</th>
+                          <th>Bus type</th>
+                          <th>Route no</th>
+                          <th>Capacity</th>
+                          <th>Driver</th>
+                          <th>Driver contact</th>
+                          <th>Owner</th>
+                          <th>Owner contact</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>6.00am - 7.00am</td>
+                          <td>30 Mins</td>
+                          <td>3</td>
+                          <td>3</td>
+                          <td>3</td>
+                          <td>30 Mins</td>
+                          <td>3</td>
+                          <td>3</td>
+                          <td><a routerLink="/Admin/editUser"><button type="button" class="btn btn-primary px-3"><i class="fa fa-edit" aria-hidden="true"></i></button></a>
+                              <button type="button" class="btn btn-danger px-3"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+              <!--Table-->
+          </div>
+
+          <!--/.Panel-->
+      </div>
+  </div>
+</div>

@@ -1,0 +1,107 @@
+<div class="schedule-container" style="margin-top:35px">
+  <div class="col-md-12">
+
+    <!--Card-->
+    <div class="card card-cascade narrower">
+
+      <!--Card image-->
+      <div class="view overlay hm-white-slight waves-light " mdbWavesEffect>
+        <h1 class="table-heading" style="font-size:200%">Bus Schedule</h1>
+        <!-- <a>
+                <div class="mask"></div>
+            </a> -->
+      </div>
+      <!--/.Card image-->
+
+      <!--Card content-->
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <mat-form-field class="margin">
+              <mat-select placeholder="Route Number">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let route of routes" [value]="route">{{route}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <a class="btn btn-unique waves-light" mdbWavesEffect>Generate New Schedule</a>
+            <a class="btn btn-unique waves-light" mdbWavesEffect>Print Shedule</a>
+          </div>
+        </div>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Time Slot</th>
+              <th>Depature Interval</th>
+              <th>Number of Busses Allocated</th>
+              <th>Order</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>6.00am - 7.00am</td>
+              <td>30 Mins</td>
+              <td>3</td>
+              <td matTooltip="A Detailed view of how busses are allocated will be shown here">[ 1 , 2 ]</td>
+            </tr>
+            <tr>
+              <td>7.00am - 8.00am</td>
+              <td>20 Mins</td>
+              <td>5</td>
+              <td matTooltip="A Detailed view of how busses are allocated will be shown here">[ 1 , 1 , 3 ] </td>
+            </tr>
+            <tr>
+              <td>8.00am - 8.30am</td>
+              <td>30 Mins</td>
+              <td>1</td>
+              <td matTooltip="A Detailed view of how busses are allocated will be shown here">[ 1 ] </td>
+            </tr>
+            <tr>
+              <td>8.30am - 9.30am</td>
+              <td>20 Mins</td>
+              <td>4</td>
+              <td matTooltip="A Detailed view of how busses are allocated will be shown here">[ 1 , 2 , 1 ] </td>
+            </tr>
+            <tr>
+              <td>9.30am - 12.30pm</td>
+              <td>30 Mins</td>
+              <td>12</td>
+              <td matTooltip="A Detailed view of how busses are allocated will be shown here">[ 2 , 2 , 2 , 1 , 2 , 3 ] </td>
+            </tr>
+            <tr>
+              <td>12.30pm - 1.30pm</td>
+              <td>20 Mins</td>
+              <td>5</td>
+              <td matTooltip="A Detailed view of how busses are allocated will be shown here">[ 1 , 2 , 2 ] </td>
+            </tr>
+            <tr>
+              <td>1.30pm - 3.30pm</td>
+              <td>30 Mins</td>
+              <td>9</td>
+              <td matTooltip="A Detailed view of how busses are allocated will be shown here">[ 2 , 2 , 2, 3 ] </td>
+            </tr>
+            <tr>
+              <td>3.30pm - 6.30pm</td>
+              <td>30 Mins</td>
+              <td>12</td>
+              <td matTooltip="A Detailed view of how busses are allocated will be shown here">[ 1 , 1 , 3 , 3 , 2 , 1 ] </td>
+            </tr>
+            <tr>
+              <td>6.30pm - 9.30pm</td>
+              <td>30 Mins</td>
+              <td>16</td>
+              <td matTooltip="A Detailed view of how busses are allocated will be shown here">[ 3 , 3 , 3 , 3 , 2 , 2 ] </td>
+            </tr>
+
+          </tbody>
+        </table>
+        <!-- <a class="btn btn-unique waves-light" mdbWavesEffect>Button</a> -->
+      </div>
+      <!--/.Card content-->
+
+    </div>
+    <!--/.Card-->
+
+  </div>
+</div>
