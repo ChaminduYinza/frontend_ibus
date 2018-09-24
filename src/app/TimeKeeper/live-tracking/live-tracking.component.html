@@ -7,16 +7,13 @@
 
                 <!--Card image-->
                 <div class="view overlay hm-white-slight waves-light" mdbWavesEffect>
-                    <agm-map [zoom]="zoom" [latitude]="lat" [longitude]="lng">
-                        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-                        <!-- <agm-polyline [editable]="true">
-                            <agm-polyline-point *ngFor="let data of lines" [latitude]="data.lat" [longitude]="data.lng">
-                            </agm-polyline-point>
-                        </agm-polyline> -->
-                        <agm-direction [waypoints]="waypoints" [origin]="origin" [destination]="destination" [renderOptions]="renderOptions" >
+                    <agm-map [mapTypeControl]="false" [maxZoom]="zoom" [minZoom]="zoom" [zoomControl]="false" [disableDefaultUI]="true" [styles]="styles"
+                        [zoom]="zoom" [latitude]="lat" [longitude]="lng">
+
+                        <agm-marker [iconUrl]="marker.icon" *ngFor="let marker of markers; let i = index" [latitude]="marker.lat" [longitude]="marker.lng">
+                        </agm-marker>
+                        <agm-direction [waypoints]="waypoints" [origin]="origin" [destination]="destination" [renderOptions]="renderOptions">
                         </agm-direction>
-                        <!-- <agm-direction [origin]="origin" [destination]="destination">
-                        </agm-direction> -->
                     </agm-map>
                     <a>
                         <div class="mask"></div>
@@ -34,25 +31,18 @@
                     </div>
                 </div>
                 <!--/.Card image-->
-
                 <!--Card content-->
                 <div class="card-body">
                     <!--Checkbox butons-->
                     <div class="form-check checkbox-teal">
-
-
                         <input type="checkbox" class="form-check-input" id="checkbox1" checked>
                         <label class="form-check-label checkbox-label" for="checkbox1">On Going</label>
                     </div>
                     <div class="form-check checkbox-teal">
-
-
                         <input type="checkbox" class="form-check-input" id="checkbox2" checked>
                         <label class="form-check-label checkbox-label" for="checkbox2">Idle</label>
                     </div>
                     <div class="form-check checkbox-teal">
-
-
                         <input type="checkbox" class="form-check-input" id="checkbox3" checked>
                         <label class="form-check-label checkbox-label" for="checkbox3">Not Functioning</label>
                     </div>
@@ -65,22 +55,18 @@
                                     <mat-option *ngFor="let route of routes" [value]="route">{{route}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
-
                             <mat-form-field class="margin">
                                 <mat-select placeholder="Bus Number">
                                     <mat-option>None</mat-option>
                                     <mat-option *ngFor="let busid of busids" [value]="busid">{{busid}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
-
                         </div>
-
                         <div class="col-md-12" class="speed-div">
                             <span>
                                 <img class="speed-meter" src="../../../assets/images/speedometer.svg"> Average Speed :
                             </span>
                         </div>
-
                     </div>
                     <div class="col-md-12 button-group-manage ">
                         <span class="">
@@ -88,14 +74,10 @@
                             <a class="btn btn-unique waves-light" mdbWavesEffect>Add To Warn List</a>
                         </span>
                     </div>
-
                 </div>
                 <!--/.Card content-->
-
             </div>
             <!--/.Card-->
-
         </div>
     </div>
-
 </div>
