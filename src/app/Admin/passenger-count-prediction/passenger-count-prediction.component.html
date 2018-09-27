@@ -1,0 +1,40 @@
+<div class="schedule-container">
+  <div class="col-md-12">
+    <div class="card card-cascade narrower">
+      <div class="view overlay hm-white-slight waves-light " mdbWavesEffect>
+        <h1 class="table-heading">Prediction Model</h1>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <form [formGroup]="dateForm">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <mat-form-field class="centreCurrentElement">
+                      <input matInput [matDatepicker]="picker" placeholder="Move In Date" (click)="picker.open()" formControlName="date">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                      <mat-error *ngIf="dateForm.controls['date'].hasError('required')">
+                        Move In Date is
+                        <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-3 centreElementsWithin">
+                    <button type="submit" [disabled]="dateForm.invalid" class="btn btn-unique waves-light  btn-md" (click)="loadPredictionData()">View</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div style="display: block">
+          <canvas mdbChart [chartType]="chartType" [datasets]="chartDatasets" [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions"
+            [legend]="true" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

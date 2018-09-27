@@ -8,10 +8,10 @@
                     <!-- <agm-map [minZoom]="zoom" [zoomControl]="true" [styles]="styles" [zoom]="zoom" [latitude]="latitude" [longitude]="longitude"
                         [usePanning]="true"> -->
 
-                        <agm-map [zoomControl]="true" [styles]="styles" [zoom]="zoom" [latitude]="latitude" [longitude]="longitude"
-                        [usePanning]="true">
+                    <agm-map [zoomControl]="true" [styles]="styles" [zoom]="zoom" [latitude]="latitude" [longitude]="longitude" [usePanning]="true">
 
-                        <agm-marker [iconUrl]="marker.icon" *ngFor="let marker of sortByBus?sortedBusMarkers:markers; let i = index" [latitude]="marker.lat" [longitude]="marker.lng">
+                        <agm-marker [iconUrl]="marker.icon" *ngFor="let marker of sortByBus?filteredBusMarkers:markers; let i = index" [latitude]="marker.lat"
+                            [longitude]="marker.lng">
                         </agm-marker>
                         <agm-direction [waypoints]="waypoints" [origin]="origin" [destination]="destination" [renderOptions]="renderOptions">
                         </agm-direction>
@@ -51,13 +51,13 @@
                     <div class="row">
                         <div class="col-md-12">
                             <mat-form-field class="margin">
-                                <mat-select placeholder="Route Number" (selectionChange)="onChangeRoute($event)" >
-                                    <mat-option *ngFor="let route of routes" [value]="route">{{route}}</mat-option>
+                                <mat-select placeholder="Route Number" (selectionChange)="onChangeRoute($event)">
+                                    <mat-option *ngFor="let route of routes" [value]="route._id">{{route.route_no}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
                             <mat-form-field class="margin">
                                 <mat-select placeholder="Bus Number" (selectionChange)="onChangeBus($event)">
-                                    <mat-option *ngFor="let busid of busids" [value]="busid">{{busid}}</mat-option>
+                                    <mat-option *ngFor="let bus of busids" [value]="bus._id">{{bus.busNo}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>

@@ -81,6 +81,11 @@ export class SideNavComponent implements OnInit {
     icon: "settings",
     item: "Settings",
     routerLink: "./Settings"
+  },
+  {
+    icon: "settings",
+    item: "Passenger Count",
+    routerLink: "./predictionResults"
   }
   ]
   constructor(private router: Router, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private userService: UserService) {
