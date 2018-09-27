@@ -20,6 +20,7 @@ import { AddRouteComponent } from './Admin/bus-route/add-route/add-route.compone
 import { BusRouteComponent } from './Admin/bus-route/bus-route.component';
 import { UpdateRouteComponent } from './Admin/bus-route/update-route/update-route.component';
 import { PassengerCountPredictionComponent } from './Admin/passenger-count-prediction/passenger-count-prediction.component';
+import { LoginComponent } from './login/login.component'
 
 // import { AuthGuardService as AuthGuard } from './services/auth-guard-service.service';
 
@@ -27,6 +28,7 @@ import { PassengerCountPredictionComponent } from './Admin/passenger-count-predi
 const routes: Routes = [
     { path: '', redirectTo: 'Welcome', pathMatch: 'full' },
     { path: 'Welcome', component: LandingPageComponent },
+    { path: 'Login', component: LoginComponent },
     //   { path: 'DepartmentSummary', component: DepartmentSummeryComponent },
     {
         path: 'User', component: SideNavComponent,
