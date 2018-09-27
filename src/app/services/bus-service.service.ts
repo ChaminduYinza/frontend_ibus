@@ -2,18 +2,40 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api-service.service';
 import { Observable, pipe } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { JwtService } from './jwt-service.service';
 
+@Injectable()
+export class BusService {
 
-@Injectable({
-  providedIn: 'root'
-})
-export class RouteServiceService {
+  constructor(private apiService: ApiService) {
 
-  constructor(private apiService: ApiService, private jwtService: JwtService) { }
-  //Get schedule from the system
-  getRoutes(): Observable<any> {
-    return this.apiService.get('/route/getAll')
+  }
+
+  addBus(bus): Observable<any> {
+    return this.apiService.post('/bus/new', bus)
+      .pipe(map(
+        data => {
+          return data;
+        }
+      ),
+        catchError(res => {
+          throw (res);
+        }));
+  }
+
+  updateBus(bus): Observable<any> {
+    return this.apiService.put('/bus/update',bus)
+      .pipe(map(
+        data => {
+          return data;
+        }
+      ),
+        catchError(res => {
+          throw (res);
+        }));
+  }
+
+  getBus(): Observable<any> {
+    return this.apiService.get('/bus/get')
       .pipe(map(
         data => {
           return data;
@@ -25,8 +47,8 @@ export class RouteServiceService {
   }
 
 
-  removeRoute(route_id): Observable<any> {
-    return this.apiService.post('/route/remove', route_id)
+  removeBus(bus_id): Observable<any> {
+    return this.apiService.post('/bus/remove', bus_id)
       .pipe(map(
         data => {
           return data;
@@ -38,8 +60,8 @@ export class RouteServiceService {
   }
 
 
-  getRouteById(route_id): Observable<any> {
-    return this.apiService.post('/route/findByID', route_id)
+  getBusById(bus_id): Observable<any> {
+    return this.apiService.post('/bus/findByBusID', bus_id)
       .pipe(map(
         data => {
           // this.setAuth(data);
@@ -51,27 +73,4 @@ export class RouteServiceService {
         }));
   }
 
-  addRoute(route): Observable<any> {
-    return this.apiService.post('/route/new', route)
-      .pipe(map(
-        data => {
-          return data;
-        }
-      ),
-        catchError(res => {
-          throw (res);
-        }));
-  }
-
-  updateRoute(route_id): Observable<any> {
-    return this.apiService.post('/route/edit', route_id)
-      .pipe(map(
-        data => {
-          return data;
-        }
-      ),
-        catchError(res => {
-          throw (res);
-        }));
-  }
 }

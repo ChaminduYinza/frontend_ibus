@@ -11,7 +11,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col-md-12">
-            <form [formGroup]="busForm" class="border border-light p-5">
+            <form [formGroup]="busEditForm" class="border border-light p-5">
               <div class="row">
                 <div class="md-form col-md-6">
                   <!-- <i class="fa fa-user prefix grey-text"></i> -->
@@ -45,8 +45,12 @@
                 </div>
                 <div class="md-form col-md-6">
                   <!-- <i class="fa fa-user prefix grey-text"></i> -->
-                  <input type="text" id="routeNo" formControlName="routeNo" class="form-control" mdbInputDirective>
-                  <label for="routeNo">Route No</label>
+                  <!-- <input type="text" id="routeNo" formControlName="routeNo" class="form-control" mdbInputDirective>
+                  <label for="routeNo">Route No</label> -->
+                  <mat-select placeholder="Route No" class="form-control" formControlName="routeNo" mdbInputDirective>
+                    <mat-option>None</mat-option>
+                    <mat-option  *ngFor="let route of routeList" [value]="route._id">{{route.route_no}}</mat-option>
+                  </mat-select>
                 </div>
               </div>
               <div class="row">
@@ -62,7 +66,7 @@
                   <label for="driverContactNo">Driver Contact No</label>
                 </div>
               </div>
-              <button mdbWavesEffect type="submit" (click)="editBus()" class="btn btn-unique waves-light" [disabled]="!busForm.valid">Save</button>
+              <button mdbWavesEffect type="submit" (click)="editBus()" class="btn btn-unique waves-light" [disabled]="!busEditForm.valid">Save</button>
             </form>
           </div>
         </div>

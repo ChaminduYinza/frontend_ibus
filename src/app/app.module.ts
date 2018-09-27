@@ -34,6 +34,8 @@ import { JwtService } from '../app/services/jwt-service.service';
 import { BusRouteComponent } from './Admin/bus-route/bus-route.component';
 import { AddRouteComponent } from './Admin/bus-route/add-route/add-route.component';
 import { BlockUIModule } from 'ng-block-ui';
+import { UpdateRouteComponent } from './Admin/bus-route/update-route/update-route.component';
+import { BusService } from '../app/services/bus-service.service'
 
 @NgModule({
     declarations: [
@@ -57,6 +59,7 @@ import { BlockUIModule } from 'ng-block-ui';
         AddBusComponent,
         BusRouteComponent,
         AddRouteComponent,
+        UpdateRouteComponent,
 
     ],
     imports: [
@@ -79,7 +82,7 @@ import { BlockUIModule } from 'ng-block-ui';
 
     ],
     schemas: [NO_ERRORS_SCHEMA],
-    providers: [FormBuilder, UserService, JwtService],
+    providers: [FormBuilder, UserService, JwtService, BusService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

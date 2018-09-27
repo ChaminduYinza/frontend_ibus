@@ -19,9 +19,10 @@
                   <label for="busNo">Bus No</label>
                 </div>
                 <div class="md-form col-md-6">
-                  <!-- <i class="fa fa-user prefix grey-text"></i> -->
-                  <input type="text" id="busType" formControlName="busType" class="form-control" mdbInputDirective>
-                  <label for="busType">Bus type</label>
+                      <mat-select placeholder="Bus Type" class="form-control" formControlName="busType" mdbInputDirective>
+                        <mat-option>None</mat-option>
+                        <mat-option  *ngFor="let bus of busTypes" [value]="bus">{{bus}}</mat-option>
+                      </mat-select>
                 </div>
               </div>
               <div class="row">
@@ -45,8 +46,13 @@
                 </div>
                 <div class="md-form col-md-6">
                   <!-- <i class="fa fa-user prefix grey-text"></i> -->
-                  <input type="text" id="routeNo" formControlName="routeNo" class="form-control" mdbInputDirective>
-                  <label for="routeNo">Route No</label>
+                  <!-- <input type="text" id="routeNo" formControlName="routeNo" class="form-control" mdbInputDirective>
+                  <label for="routeNo">Route No</label> -->
+
+                  <mat-select placeholder="Route No" class="form-control" formControlName="routeNo" mdbInputDirective>
+                    <mat-option>None</mat-option>
+                    <mat-option  *ngFor="let route of routeList" [value]="route._id">{{route.route_no}}</mat-option>
+                  </mat-select>
                 </div>
               </div>
               <div class="row">
