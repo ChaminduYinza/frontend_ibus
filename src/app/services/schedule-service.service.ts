@@ -23,5 +23,18 @@ export class ScheduleServiceService {
           throw (res);
         }));
   }
+
+  //Generate schedule 
+  generateSchedule(requestBody): Observable<any> {
+    return this.apiService.post('/schedule/generateSchedule', requestBody)
+      .pipe(map(
+        data => {
+          return data;
+        }
+      ),
+        catchError(res => {
+          throw (res);
+        }));
+  }
 }
 

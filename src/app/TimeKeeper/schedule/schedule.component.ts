@@ -21,7 +21,7 @@ export class ScheduleComponent implements OnInit {
   onChange(event) {
     console.log(new Date())
 
-    this.scheduleService.getSchedule({ route: event.value, date: "2018-09-24 " }).subscribe((data) => {
+    this.scheduleService.getSchedule({ route: event.value, date: new Date().setHours(0, 0, 0, 0)  }).subscribe((data) => {
       console.log(data.data[0].allocation)
       this.allocation = data.data[0].allocation;
     })

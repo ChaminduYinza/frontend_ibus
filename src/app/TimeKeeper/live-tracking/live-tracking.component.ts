@@ -19,6 +19,8 @@ export class LiveTrackingComponent implements OnInit, OnDestroy {
   waypoints: object = []
   markers: any;
   styles = config.mapStyle;
+  sortByBus: Boolean = false;
+  sortedBusMarkers = []
   icon: any = {
     url: "../../../assets/images/pin.svg",
     scaledSize: {
@@ -59,18 +61,25 @@ export class LiveTrackingComponent implements OnInit, OnDestroy {
   }
   setDirections() {
     this.subscription = this.locationService.getLocations().subscribe((data) => {
-      this.markers = []
       if (data['tracker'] != 'No active trackers') {
-        data['tracker'].forEach(element => {
-          this.markers.push(
-            {
-              lat: +element.latitude,
-              lng: +element.longitude,
-              icon: '../../../assets/images/pin.png',
-              id: element._id
-            }
-          )
-        });
+        // console.log(data['tracker'])
+        console.log(this.sortByBus)
+        if (!this.sortByBus) {
+          this.markers = []
+          data['tracker'].forEach(element => {
+            this.markers.push(
+              {
+                lat: +element.latitude,
+                lng: +element.longitude,
+                icon: '../../../assets/images/pin.png',
+                id: element._id,
+                bus_id: element.bus
+              }
+            )
+          });
+        }
+      } else {
+        this.markers = []
       }
     }, (err) => {
       console.log(err)
@@ -95,6 +104,24 @@ export class LiveTrackingComponent implements OnInit, OnDestroy {
         icon: '../../../assets/images/pin.png'
       }
     ]
+
+  }
+
+  onChangeRoute(event) {
+
+  }
+  onChangeBus(event) {
+    if (this.markers.length > 0) {
+      this.sortedBusMarkers = []
+      this.sortByBus = true;
+      this.markers.forEach(function (element, idx) {
+        if (element.bus_id == event.value) {
+          this.sortedBusMarkers.push(element)
+        }
+      });
+    } else {
+      this.sortByBus = false;
+    }
 
   }
 }
