@@ -4,6 +4,8 @@ import { RouteServiceService } from '../../services/route-service.service'
 import { ScheduleServiceService } from '../../services/schedule-service.service'
 import { config } from '../../../../config/config'
 import swal from 'sweetalert2';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-generate-schedule',
@@ -11,6 +13,7 @@ import swal from 'sweetalert2';
   styleUrls: ['./generate-schedule.component.scss']
 })
 export class GenerateScheduleComponent implements OnInit {
+  @BlockUI() blockUI: NgBlockUI;
   scheduleForm: FormGroup;
   routes = [
     '120 - Colombo - Horana',
@@ -106,7 +109,8 @@ export class GenerateScheduleComponent implements OnInit {
     }
   ]
 
-  constructor(private formBuilder: FormBuilder, private routeService: RouteServiceService, private scheduleService: ScheduleServiceService) { }
+  constructor(private formBuilder: FormBuilder, private routeService: RouteServiceService,
+    private scheduleService: ScheduleServiceService, private router: Router) { }
 
 
   ngOnInit() {
@@ -120,15 +124,18 @@ export class GenerateScheduleComponent implements OnInit {
   }
 
   generateSchedule() {
+    this.blockUI.start('Resouce allocation is being executing, Please wait!');
     let requestBody = this.scheduleForm.value;
     requestBody.recreate = false;
     this.scheduleService.generateSchedule(requestBody).subscribe((data) => {
       if (data.data == config.scheduleCreatedStatus) {
+        this.blockUI.stop();
+        this.router.navigateByUrl('User/Schedule')
         this.showAlert('Success', 'Schedule created successfully.', 'success', "btn btn-success");
       }
-    },(error)=>{
-      console.log(error.msg)
-      if(error.msg == config.scheduleAlreadyExsits){
+    }, (error) => {
+      this.blockUI.stop();
+      if (error.msg == config.scheduleAlreadyExsits) {
         swal({
           title: 'Are you sure?',
           text: "There is already a schedule available for today, Do you want to re-create?",
@@ -140,9 +147,12 @@ export class GenerateScheduleComponent implements OnInit {
           buttonsStyling: false
         }).then((result) => {
           if (result.value) {
+            this.blockUI.start('Resouce allocation is being executing, Please wait!');
             requestBody.recreate = true;
             this.scheduleService.generateSchedule(requestBody).subscribe((data) => {
+              this.router.navigateByUrl('User/Schedule')
               this.showAlert('Success', 'Schedule created successfully.', 'success', "btn btn-success");
+              this.blockUI.stop();
               this.ngOnInit();
             }, (error) => {
               this.showAlert('oops!', error.msg, 'error', "btn btn-danger");

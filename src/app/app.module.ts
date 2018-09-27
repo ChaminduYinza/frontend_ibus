@@ -33,7 +33,7 @@ import { HttpModule } from '@angular/http';
 import { JwtService } from '../app/services/jwt-service.service';
 import { BusRouteComponent } from './Admin/bus-route/bus-route.component';
 import { AddRouteComponent } from './Admin/bus-route/add-route/add-route.component';
-
+import { BlockUIModule } from 'ng-block-ui';
 
 @NgModule({
     declarations: [
@@ -63,6 +63,7 @@ import { AddRouteComponent } from './Admin/bus-route/add-route/add-route.compone
         BrowserModule,
         MalihuScrollbarModule.forRoot(),
         MDBBootstrapModule.forRoot(),
+        BlockUIModule.forRoot(),
         BrowserAnimationsModule,
         MaterialModule,
         AppRoutingModule,
@@ -78,7 +79,7 @@ import { AddRouteComponent } from './Admin/bus-route/add-route/add-route.compone
 
     ],
     schemas: [NO_ERRORS_SCHEMA],
-    providers: [FormBuilder, UserService,JwtService],
+    providers: [FormBuilder, UserService, JwtService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

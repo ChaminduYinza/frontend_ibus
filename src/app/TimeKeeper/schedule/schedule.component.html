@@ -1,19 +1,9 @@
 <div class="schedule-container">
   <div class="col-md-12">
-
-    <!--Card-->
     <div class="card card-cascade narrower">
-
-      <!--Card image-->
       <div class="view overlay hm-white-slight waves-light " mdbWavesEffect>
         <h1 class="table-heading">Bus Schedule</h1>
-        <!-- <a>
-                <div class="mask"></div>
-            </a> -->
       </div>
-      <!--/.Card image-->
-
-      <!--Card content-->
       <div class="card-body">
         <div class="row">
           <div class="col-md-12">
@@ -27,7 +17,6 @@
             <a class="btn btn-unique waves-light " mdbWavesEffect>Print Shedule</a>
           </div>
         </div>
-
         <table class="table table-striped ">
           <thead>
             <tr>
@@ -42,16 +31,11 @@
               <td>{{row.time_slot}}</td>
               <td>{{row.fixedInterval}} Mins</td>
               <td>{{row.numberOfBusses}}</td>
-              <td matTooltip={{row.busNumbers}}>[{{row.allocation}}]</td>
+              <td matTooltip={{row.busNumbers}}>[ {{row.allocation}} ]</td>
             </tr>
           </tbody>
         </table>
-        <!-- <a class="btn btn-unique waves-light " mdbWavesEffect>Button</a> -->
       </div>
-      <!--/.Card content-->
-
     </div>
-    <!--/.Card-->
-
   </div>
 </div>

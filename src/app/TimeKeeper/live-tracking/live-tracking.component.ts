@@ -2,12 +2,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LocationServiceService } from '../../services/location-service.service'
 import { Subscription } from 'rxjs';
 import { config } from '../../../../config/config'
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 @Component({
   selector: 'app-live-tracking',
   templateUrl: './live-tracking.component.html',
   styleUrls: ['./live-tracking.component.scss']
 })
 export class LiveTrackingComponent implements OnInit, OnDestroy {
+  @BlockUI() blockUI: NgBlockUI;
   subscription: Subscription;
   public scrollbarOptions = { axis: "y", theme: "dark-thin" };
   latitude: number = 8.5922;
@@ -111,6 +113,7 @@ export class LiveTrackingComponent implements OnInit, OnDestroy {
 
   }
   onChangeBus(event) {
+    this.blockUI.start('Loading...');
     if (this.markers.length > 0) {
       this.sortedBusMarkers = []
       this.sortByBus = true;
@@ -122,6 +125,6 @@ export class LiveTrackingComponent implements OnInit, OnDestroy {
     } else {
       this.sortByBus = false;
     }
-
+    this.blockUI.stop();
   }
 }
