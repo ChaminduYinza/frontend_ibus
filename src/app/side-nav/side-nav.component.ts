@@ -47,25 +47,30 @@ export class SideNavComponent implements OnInit {
   ]
 
   admin = [{
-    icon: "dashboard",
+    icon: "person",
     item: "Users",
-    routerLink: "./Users"
+    routerLink: "./User"
   },
 
   {
     icon: "assignment",
     item: "Bus",
-    routerLink: "./Busses"
+    routerLink: "./Bus"
   },
   {
     icon: "insert_chart",
     item: "Bus Route",
-    routerLink: "./Routes"
+    routerLink: "./Route"
   },
   {
     icon: "assignment",
     item: "Generate Schedules",
     routerLink: "./GenerateSchedule"
+  },
+  {
+    icon: "assignment",
+    item: "Bus Schedules",
+    routerLink: "./Schedule"
   },
   {
     icon: "account_circle",

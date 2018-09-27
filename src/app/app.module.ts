@@ -29,11 +29,13 @@ import { AddBusComponent } from './Admin/bus/add-bus/add-bus.component';
 import { ScheduleAdminComponent } from './Admin/schedule/schedule.component';
 import { GenerateScheduleAdminComponent } from './Admin/schedule/generate-schedule/generate-schedule.component';
 import { UserService } from './services/user-service.service';
+import { RouteService } from './services/route-service.service';
 import { HttpModule } from '@angular/http';
 import { JwtService } from '../app/services/jwt-service.service';
 import { BusRouteComponent } from './Admin/bus-route/bus-route.component';
 import { AddRouteComponent } from './Admin/bus-route/add-route/add-route.component';
-
+import { UpdateRouteComponent } from './Admin/bus-route/update-route/update-route.component';
+import {BusService} from '../app/services/bus-service.service'
 
 @NgModule({
     declarations: [
@@ -57,6 +59,7 @@ import { AddRouteComponent } from './Admin/bus-route/add-route/add-route.compone
         AddBusComponent,
         BusRouteComponent,
         AddRouteComponent,
+        UpdateRouteComponent,
 
     ],
     imports: [
@@ -78,7 +81,7 @@ import { AddRouteComponent } from './Admin/bus-route/add-route/add-route.compone
 
     ],
     schemas: [NO_ERRORS_SCHEMA],
-    providers: [FormBuilder, UserService,JwtService],
+    providers: [FormBuilder, UserService,JwtService,RouteService,BusService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

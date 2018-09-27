@@ -1,11 +1,9 @@
 <div class="schedule-container" style="margin-top:30px;">
     <div class="col-md-12">
-
-        <!--Card-->
         <div class="card card-cascade narrower">
 
             <div class="view overlay hm-white-slight waves-light " mdbWavesEffect>
-                <h1 class="table-heading" style="font-size:200%">Add Route</h1>
+                <h1 class="table-heading" style="font-size:200%">Edit Route</h1>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -68,7 +66,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <button mdbWavesEffect type="submit" (click)="addRoute()" class="btn btn-unique waves-light" [disabled]="!routeForm.valid">Save</button>
+                                <button mdbWavesEffect type="submit" (click)="editRoute()" class="btn btn-unique waves-light" [disabled]="!routeForm.valid">Edit</button>
                             </div>
 
                         </form>

@@ -13,15 +13,15 @@
             <div class="card-body border border-light" style="margin: 15px;">
                 <div class="row">
                     <div class="col">
-                        <a routerLink="/Admin/AddUser"><button mdbBtn type="button" class="btn btn-unique" style="margin-top: 30px;"
+                        <a routerLink="/Admin/AddUser"><button mdbBtn type="button" class="btn btn-unique btn-md" style="margin-top: 30px;"
                                 mdbWavesEffect>New User</button></a>
                     </div>
-                    <div class="col">
+                    <!-- <div class="col">
                         <form class="form-inline md-form mr-auto" style="margin-left:15px">
                             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                             <button class="btn btn-unique btn-rounded btn-sm my-0 waves-light" mdbWavesEffect type="submit">Search</button>
                         </form>
-                    </div>
+                    </div> -->
                 </div>
                 <table class="table table-striped">
                     <thead>
@@ -41,9 +41,9 @@
                             <td>{{user.email}}</td>
                             <td>{{user.contact_no}}</td>
                             <td>{{user.status}}</td>
-                            <td><button (click)="editUser(user._id)" type="button" class="btn btn-primary px-3"><i
+                            <td><button (click)="editUser(user._id)" type="button" class="btn btn-primary px-3 btn-sm"><i
                                         class="fa fa-edit" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-danger px-3"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-danger px-3 btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button>
                             </td>
                         </tr>
                     </tbody>

@@ -13,6 +13,11 @@ import Swal from 'sweetalert2'
 export class AddUserComponent implements OnInit {
   userForm: FormGroup;
   validTextType: boolean = false;
+  userRole = [
+    'Admin',
+    'Timekeeper',
+    'Driver',
+  ];
 
   constructor(private formBuilder: FormBuilder, private userService: UserService) { }
 
@@ -22,7 +27,8 @@ export class AddUserComponent implements OnInit {
       lastName: [null, Validators.required],
       email: [null, Validators.required],
       contactNo: [null, Validators.required],
-      password: [null, Validators.required]
+      password: [null, Validators.required],
+      userRole:[null, Validators.required]
 
     });
   }
@@ -52,7 +58,7 @@ export class AddUserComponent implements OnInit {
       email: this.userForm.value.email,
       contact_no: this.userForm.value.contactNo,
       password: this.userForm.value.password,
-      role:3,// role
+      role:this.userForm.value.userRole,// role
 
     };
 

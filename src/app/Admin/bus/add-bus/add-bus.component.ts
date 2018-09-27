@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, AbstractControl, FormGroup, Validators } from '@angular/forms';
+import {BusService} from '../../../services/bus-service.service'
+import {RouteService} from '../../../services/route-service.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-add-bus',
@@ -9,9 +12,20 @@ import { FormBuilder, AbstractControl, FormGroup, Validators } from '@angular/fo
 export class AddBusComponent implements OnInit {
   busForm: FormGroup;
   validTextType: boolean = false;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,private busService:BusService,private routeService:RouteService) { }
+
+  routeList:any;
+
+
+  busTypes = [
+    'A/C',
+    'NON A/C',
+  ];
 
   ngOnInit() {
+
+    this.getRoutes();
+
     this.busForm = this.formBuilder.group({
       busNo: [null, Validators.required],
       busType: [null, Validators.required],
@@ -22,7 +36,17 @@ export class AddBusComponent implements OnInit {
       driver: [null, Validators.required],
       driverContactNo: [null, Validators.required],
     });
+    
+
+    
   }
+
+getRoutes() {
+    this.routeService.getRoutes().subscribe((data) => {
+        console.log(data.msg)
+        this.routeList = data.msg;
+    })
+}
   textValidationType(e) {
     if (e) {
       this.validTextType = true;
@@ -41,7 +65,33 @@ export class AddBusComponent implements OnInit {
   }
 
   addBus(){
-    console.log(this.busForm.value.status)
+    const bus = {
+      busNo: this.busForm.value.busNo,
+      busType: this.busForm.value.busType,
+      owner: this.busForm.value.owner,
+      ownerContactNo: this.busForm.value.ownerContactNo,
+      noOfSeats: this.busForm.value.noOfSeats,
+      routeNo: this.busForm.value.routeNo,
+      driverName: this.busForm.value.driver,
+      driverContact: this.busForm.value.driverContactNo,
+      totalRevenue:0
+
+    };
+
+    this.busService.addBus(bus).subscribe((res) => {
+
+      if (res.status) {
+        Swal("Sucess!", res.msg, "success");
+        this.busForm.reset();
+      } else {
+        Swal("Error!",res.msg, "warning");
+
+      }
+
+    }, (err) => {
+      Swal("Error!", err.data, "warning");
+
+    })
   }
 
 }

@@ -17,6 +17,8 @@ import { BusComponent } from './Admin/bus/bus.component';
 import { ScheduleAdminComponent } from './Admin/schedule/schedule.component';
 import { GenerateScheduleAdminComponent } from './Admin/schedule/generate-schedule/generate-schedule.component';
 import { AddRouteComponent } from './Admin/bus-route/add-route/add-route.component'
+import { BusRouteComponent } from './Admin/bus-route/bus-route.component';
+import { UpdateRouteComponent } from './Admin/bus-route/update-route/update-route.component';
 
 // import { AuthGuardService as AuthGuard } from './services/auth-guard-service.service';
 
@@ -45,15 +47,19 @@ const routes: Routes = [
         // canActivate: [AuthGuard],
         children: [
             { path: 'AddUser', component: AddUserComponent },
-            { path: 'Users', component: UserComponent },
+            { path: 'User', component: UserComponent },
             { path: 'editUser/:user_id', component: UpdateUserComponent },
             { path: 'ChangePassword', component: ChangePasswordComponent },
             { path: 'AddBus', component: AddBusComponent },
             { path: 'editBus', component: UpdateBusComponent },
-            { path: 'Buses', component: BusComponent },
+            { path: 'Bus', component: BusComponent },
             { path: 'Schedule', component: ScheduleAdminComponent },
             { path: 'GenerateSchedule', component: GenerateScheduleAdminComponent },
             { path: 'AddRoute', component: AddRouteComponent },
+            { path: 'Route', component: BusRouteComponent },
+            { path: 'editRoute/:route_id', component: UpdateRouteComponent },
+            { path: 'editBus/:bus_id', component: UpdateBusComponent }
+
 
         ]
         // , data: {
