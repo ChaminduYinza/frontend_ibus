@@ -51,17 +51,18 @@ export class SideNavComponent implements OnInit {
     item: "Users",
     routerLink: "./User"
   },
+  {
+    icon: "insert_chart",
+    item: "Bus Route",
+    routerLink: "./Route"
+  },
 
   {
     icon: "assignment",
     item: "Bus",
     routerLink: "./Bus"
   },
-  {
-    icon: "insert_chart",
-    item: "Bus Route",
-    routerLink: "./Route"
-  },
+
   {
     icon: "assignment",
     item: "Generate Schedules",
@@ -92,14 +93,11 @@ export class SideNavComponent implements OnInit {
   ngOnInit() {
     this.toggle.toggle();
     console.log(this.userService.getLoggedInUser().loggedInUserRole)
-    this.userService.getLoggedInUser().loggedInUserRole == '3' ? this.sideMenu = this.admin : this.sideMenu = this.timeKeeper
+    this.userService.getLoggedInUser().loggedInUserRole == 'Admin' ? this.sideMenu = this.admin : this.sideMenu = this.timeKeeper
   }
 
   signOut() {
-    this.router.navigate(['/SignIn']);
+    this.router.navigate(['/Login']);
   }
-
-
-
 
 }

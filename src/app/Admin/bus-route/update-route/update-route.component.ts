@@ -44,7 +44,7 @@ export class UpdateRouteComponent implements OnInit {
       this.patchValues(data.msg)
     });
 
-    
+
   }
   patchValues(data) {
     const control = <FormArray>this.routeForm.controls['stations'];
@@ -109,6 +109,7 @@ export class UpdateRouteComponent implements OnInit {
       route_to: this.routeForm.value.route_to,
       total_km: this.routeForm.value.total_km,
       bus_stops: this.routeForm.value.stations,
+      allocated_time:"45:00"
 
     };
 

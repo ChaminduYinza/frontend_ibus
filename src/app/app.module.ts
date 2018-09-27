@@ -35,7 +35,8 @@ import { BusRouteComponent } from './Admin/bus-route/bus-route.component';
 import { AddRouteComponent } from './Admin/bus-route/add-route/add-route.component';
 import { BlockUIModule } from 'ng-block-ui';
 import { UpdateRouteComponent } from './Admin/bus-route/update-route/update-route.component';
-import { BusService } from '../app/services/bus-service.service'
+import { BusService } from '../app/services/bus-service.service';
+import { LoginComponent } from './login/login.component'
 
 @NgModule({
     declarations: [
@@ -60,6 +61,7 @@ import { BusService } from '../app/services/bus-service.service'
         BusRouteComponent,
         AddRouteComponent,
         UpdateRouteComponent,
+        LoginComponent,
 
     ],
     imports: [

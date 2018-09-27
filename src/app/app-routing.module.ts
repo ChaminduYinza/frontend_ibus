@@ -19,6 +19,7 @@ import { GenerateScheduleAdminComponent } from './Admin/schedule/generate-schedu
 import { AddRouteComponent } from './Admin/bus-route/add-route/add-route.component'
 import { BusRouteComponent } from './Admin/bus-route/bus-route.component';
 import { UpdateRouteComponent } from './Admin/bus-route/update-route/update-route.component';
+import { LoginComponent } from './login/login.component'
 
 // import { AuthGuardService as AuthGuard } from './services/auth-guard-service.service';
 
@@ -26,6 +27,7 @@ import { UpdateRouteComponent } from './Admin/bus-route/update-route/update-rout
 const routes: Routes = [
     { path: '', redirectTo: 'Welcome', pathMatch: 'full' },
     { path: 'Welcome', component: LandingPageComponent },
+    { path: 'Login', component: LoginComponent },
     //   { path: 'DepartmentSummary', component: DepartmentSummeryComponent },
     {
         path: 'User', component: SideNavComponent,
@@ -58,7 +60,8 @@ const routes: Routes = [
             { path: 'AddRoute', component: AddRouteComponent },
             { path: 'Route', component: BusRouteComponent },
             { path: 'editRoute/:route_id', component: UpdateRouteComponent },
-            { path: 'editBus/:bus_id', component: UpdateBusComponent }
+            { path: 'editBus/:bus_id', component: UpdateBusComponent },
+
 
 
         ]

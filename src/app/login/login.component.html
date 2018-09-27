@@ -1,0 +1,41 @@
+<!--Modal: Contact form-->
+
+<div class="modal-dialog cascading-modal" role="document">
+    <!--Content-->
+    <div  class="modal-content">
+  
+      <!--Header-->
+      <div class="modal-header light-blue darken-3 white-text">
+        <h4 class="title">
+          <i class="fa fa-user"></i> LOGIN</h4>
+      </div>
+      <!--Body-->
+      <div class="modal-body mb-0">
+        <form [formGroup]="loginForm" class="border border-light p-5">
+  
+        <div class="md-form form-sm">
+          <i class="fa fa-envelope prefix"></i>
+          <input formControlName="username" class="form-control" mdbInputDirective type="email" id="email">
+          <label for="email">Your email</label>
+        </div>
+  
+        <div class="md-form form-sm">
+          <i class="fa fa-lock prefix"></i>
+          <input formControlName="password" class="form-control" mdbInputDirective type="password">
+          <label for="password">Your password</label>
+        </div>
+  
+        <div class="text-center mt-1-half">
+          <!-- <button (click)="login()" mdbBtn color="info" class="mb-2 waves-light" >Login
+            <i class="fa fa-send ml-1"></i>
+          </button> -->
+          <button class="btn btn-indigo" (click)="login()" [disabled]="!loginForm.valid" mdbWavesEffect>Login <i class="fa fa-send ml-1"></i></button>
+        </div>
+  
+      </form>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+  
+  <!--Modal: Contact form-->
