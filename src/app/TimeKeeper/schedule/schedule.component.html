@@ -9,15 +9,14 @@
           <div class="col-md-12">
             <mat-form-field class="margin">
               <mat-select placeholder="Route Number" (selectionChange)="onChange($event)">
-                <mat-option *ngFor=" let route of routes " [value]="route._id ">{{route.route_no}}</mat-option>
+                <mat-option *ngFor=" let route of routes " [value]="route._id ">{{route.route_no +" "+ route.route_from +" - "+ route.route_to}}</mat-option>
               </mat-select>
             </mat-form-field>
-
-            <a class="btn btn-unique waves-light " mdbWavesEffect>Generate New Schedule</a>
-            <a class="btn btn-unique waves-light " mdbWavesEffect>Print Shedule</a>
+            <a (click)="generateSchedule()" class="btn btn-unique waves-light " mdbWavesEffect>Generate New Schedule</a>
+            <a (click)="exportAsPDF()" class="btn btn-unique waves-light " mdbWavesEffect>Export Shedule</a>
           </div>
         </div>
-        <table class="table table-striped ">
+        <table id="contentToConvert" class="table table-striped ">
           <thead>
             <tr>
               <th>Time Slot</th>

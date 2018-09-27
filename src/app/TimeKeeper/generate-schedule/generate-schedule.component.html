@@ -12,7 +12,7 @@
               <div class="md-form">
                 <mat-form-field class="margin">
                   <mat-select placeholder="Route Number" formControlName="route_no">
-                    <mat-option *ngFor=" let route of routes " [value]="route._id ">{{route.route_no}}</mat-option>
+                    <mat-option *ngFor=" let route of routes " [value]="route._id ">{{route.route_no +" "+ route.route_from +" - "+ route.route_to}}</mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>

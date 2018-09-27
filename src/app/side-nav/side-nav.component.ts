@@ -11,6 +11,7 @@ export class SideNavComponent implements OnInit {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
   public scrollbarOptions = { axis: "y", theme: "dark-thin" };
+  userName: any;
   sideMenu: any
 
   timeKeeper = [{
@@ -96,8 +97,8 @@ export class SideNavComponent implements OnInit {
   }
   @ViewChild('snav') public toggle: any;
   ngOnInit() {
+    this.userName = this.userService.getLoggedInUser().loggedInUserEmail
     this.toggle.toggle();
-    console.log(this.userService.getLoggedInUser().loggedInUserRole)
     this.userService.getLoggedInUser().loggedInUserRole == 'Admin' ? this.sideMenu = this.admin : this.sideMenu = this.timeKeeper
   }
 
