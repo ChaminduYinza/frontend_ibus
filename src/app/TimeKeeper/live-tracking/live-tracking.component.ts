@@ -87,8 +87,8 @@ export class LiveTrackingComponent implements OnInit, OnDestroy {
 
     this.markers = [
       {
-        lat: 6.914508,
-        lng: 79.972141,
+        lat: 6.930831,
+        lng: 79.984218,
         icon: '../../../assets/images/pin.png'
       }
     ]

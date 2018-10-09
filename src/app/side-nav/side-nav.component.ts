@@ -39,11 +39,6 @@ export class SideNavComponent implements OnInit {
     icon: "account_circle",
     item: "Profile",
     routerLink: "./Profile"
-  },
-  {
-    icon: "settings",
-    item: "Settings",
-    routerLink: "./Settings"
   }
   ]
 

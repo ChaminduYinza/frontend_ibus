@@ -5,10 +5,10 @@
             <div class="card card-cascade narrower">
                 <!--Card image-->
                 <div class="view overlay hm-white-slight waves-light" mdbWavesEffect>
-                    <!-- <agm-map [minZoom]="zoom" [zoomControl]="true" [styles]="styles" [zoom]="zoom" [latitude]="latitude" [longitude]="longitude"
-                        [usePanning]="true"> -->
+                    <agm-map [minZoom]="zoom" [zoomControl]="true" [styles]="styles" [zoom]="zoom" [latitude]="latitude" [longitude]="longitude"
+                        [usePanning]="true">
 
-                    <agm-map [zoomControl]="true" [styles]="styles" [zoom]="zoom" [latitude]="latitude" [longitude]="longitude" [usePanning]="true">
+                    <!-- <agm-map [zoomControl]="true" [styles]="styles" [zoom]="zoom" [latitude]="latitude" [longitude]="longitude" [usePanning]="true"> -->
 
                         <agm-marker [iconUrl]="marker.icon" *ngFor="let marker of sortByBus?filteredBusMarkers:markers; let i = index" [latitude]="marker.lat"
                             [longitude]="marker.lng">
