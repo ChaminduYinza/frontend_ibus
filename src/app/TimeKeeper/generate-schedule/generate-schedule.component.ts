@@ -14,6 +14,7 @@ import { Router } from '@angular/router'
 })
 export class GenerateScheduleComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
+  minDate = new Date();
   scheduleForm: FormGroup;
   routes = [
     '120 - Colombo - Horana',
