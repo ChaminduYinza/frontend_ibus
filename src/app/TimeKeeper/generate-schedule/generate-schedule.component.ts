@@ -16,6 +16,7 @@ export class GenerateScheduleComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
   minDate = new Date();
   scheduleForm: FormGroup;
+  validTextType: any;
   routes = [
     '120 - Colombo - Horana',
     '120 - Colombo - Kesbewa',
@@ -33,16 +34,34 @@ export class GenerateScheduleComponent implements OnInit {
     this.scheduleForm = this.formBuilder.group({
       iterationCount: [null, Validators.required],
       route_no: [null, Validators.required],
+      date: [null, Validators.required],
     });
     this.routeService.getRoutes().subscribe((data) => {
       this.routes = data.data
     })
   }
 
+  textValidationType(e) {
+    e ? (this.validTextType = true) : (this.validTextType = false);
+  }
+
+  isFieldValid(form: FormGroup, field: string) {
+    return !form.get(field).valid && form.get(field).touched;
+  }
+
+  displayFieldCss(form: FormGroup, field: string) {
+    return {
+      'has-error': this.isFieldValid(form, field),
+      'has-feedback': this.isFieldValid(form, field)
+    };
+  }
+
+
   generateSchedule() {
     this.blockUI.start('Resouce allocation is being executing, Please wait!');
     let requestBody = this.scheduleForm.value;
     requestBody.recreate = false;
+    requestBody.date = new Date(requestBody.date).setHours(0, 0, 0, 0);
     this.scheduleService.generateSchedule(requestBody).subscribe((data) => {
       if (data.data == config.scheduleCreatedStatus) {
         this.blockUI.stop();
