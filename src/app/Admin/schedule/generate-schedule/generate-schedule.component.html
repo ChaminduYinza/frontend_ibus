@@ -1,4 +1,4 @@
-<div class="container" style="margin-top:35px">
+<div class="" style="margin-top:35px">
   <div class="col-md-12">
 
     <div class="card card-cascade narrower">
@@ -9,7 +9,7 @@
           <div class="mask"></div>
         </a>
       </div>
-      <div class="card-body">
+      <div class="card-body border border-light" style="margin: 15px;">
         <div class="row">
           <div class="col-md-6" style="font-weight:600">
             <form [formGroup]="scheduleForm">
@@ -51,24 +51,12 @@
               </div>
               <input class="form-check-input" type="checkbox" id="checkbox11" (change)="settings()">
               <label class="form-check-label" for="checkbox11">Use Recommended settings</label>
-              <div class="row">
-                <div class="col">
-                  <label for="form2">Start time</label>
-                  <input type="time" id="startTime" class="form-control form-control-sm" formControlName="startTime">
-
-                </div>
-                <div class="col">
-                  <label for="form3">End Time</label>
-                  <input type="time" id="endTime" formControlName="endTime" class="form-control form-control-sm">
-
-                </div>
-              </div>
               <div class="row" style="margin-top:15px">
                 <div class="col">
                   <label for="form3">Set Interval :</label>
                 </div>
                 <div class="col">
-                  <input mdbInputDirective type="number" min="5" id="interval" formControlName="interval" class="form-control form-control-sm">
+                  <input type="number" min="5" max="30" step="5" id="interval" formControlName="interval" class="form-control form-control-sm">
                 </div>
               </div>
               <div class="row" style="margin-top:15px">
@@ -78,7 +66,7 @@
                 <div class="col">
                   <!-- <input mdbInputDirective type="text" id="route" formControlName="route" class="form-control form-control-sm"> -->
           
-                  <mat-select placeholder="Route No" class="form-control" formControlName="routeNo" mdbInputDirective>
+                  <mat-select placeholder="Route No" class="form-control" formControlName="routeNo">
                       <mat-option>None</mat-option>
                       <mat-option  *ngFor="let route of routeList" [value]="route._id">{{route.route_no}}</mat-option>
                     </mat-select>
@@ -87,8 +75,8 @@
 
               <div class="row" style="margin-top:15px">
                 <div class="col">
-                  <button type="submit" class="btn btn-unique waves-light  btn-md"  (click)="generateSchedule()">Generate</button>
-                  <button type="button" class="btn btn-outline-primary btn-md" mdbWavesEffect><b>Reset</b></button>
+                  <button type="submit" class="btn btn-unique waves-light  btn-md"   (click)="generateSchedule()">Generate Schedule</button>
+                  <button type="button" class="btn btn-outline-primary btn-md" mdbWavesEffect><b>Print Pdf</b></button>
                 </div>
               </div>
 
@@ -96,8 +84,29 @@
           </div>
 
         </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Time Slot</th>
+              <th>Depature Interval</th>
+              <th>Number of Busses Allocated</th>
+              <th>Order</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>6.00am - 7.00am</td>
+              <td>30 Mins</td>
+              <td>3</td>
+              <td matTooltip="A Detailed view of how busses are allocated will be shown here">[ 1 , 2 ]</td>
+            </tr>
+          
+
+          </tbody>
+        </table>
       </div>
       <!--/.Panel-->
+      
     </div>
   </div>
 </div>

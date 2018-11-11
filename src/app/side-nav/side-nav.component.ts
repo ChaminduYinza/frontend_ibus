@@ -11,6 +11,7 @@ export class SideNavComponent implements OnInit {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
   public scrollbarOptions = { axis: "y", theme: "dark-thin" };
+  userName: any;
   sideMenu: any
 
   timeKeeper = [{
@@ -38,11 +39,6 @@ export class SideNavComponent implements OnInit {
     icon: "account_circle",
     item: "Profile",
     routerLink: "./Profile"
-  },
-  {
-    icon: "settings",
-    item: "Settings",
-    routerLink: "./Settings"
   }
   ]
 
@@ -71,18 +67,23 @@ export class SideNavComponent implements OnInit {
   {
     icon: "assignment",
     item: "Bus Schedules",
-    routerLink: "./Schedule"
+    routerLink: "./GenerateSchedule"
   },
   {
     icon: "account_circle",
     item: "Profile",
     routerLink: "./Profile"
   },
-  // {
-  //   icon: "settings",
-  //   item: "Settings",
-  //   routerLink: "./Settings"
-  // }
+  {
+    icon: "settings",
+    item: "Settings",
+    routerLink: "./Settings"
+  },
+  {
+    icon: "settings",
+    item: "Passenger Count",
+    routerLink: "./predictionResults"
+  }
   ]
   constructor(private router: Router, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private userService: UserService) {
     this.mobileQuery = media.matchMedia('(max-width: 700px)');
@@ -91,8 +92,8 @@ export class SideNavComponent implements OnInit {
   }
   @ViewChild('snav') public toggle: any;
   ngOnInit() {
+    this.userName = this.userService.getLoggedInUser().loggedInUserEmail
     this.toggle.toggle();
-    console.log(this.userService.getLoggedInUser().loggedInUserRole)
     this.userService.getLoggedInUser().loggedInUserRole == 'Admin' ? this.sideMenu = this.admin : this.sideMenu = this.timeKeeper
   }
 

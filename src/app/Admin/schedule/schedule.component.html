@@ -23,7 +23,24 @@
                 <mat-option *ngFor="let route of routes" [value]="route">{{route}}</mat-option>
               </mat-select>
             </mat-form-field>
-
+            <mat-form-field class="margin">
+              <mat-select placeholder="Generation Count">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let route of routes" [value]="route">{{route}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="margin">
+              <mat-select placeholder="Population Size">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let route of routes" [value]="route">{{route}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="margin">
+              <mat-select placeholder="Crossover Rate">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let route of routes" [value]="route">{{route}}</mat-option>
+              </mat-select>
+            </mat-form-field>
             <a class="btn btn-unique waves-light" mdbWavesEffect>Generate New Schedule</a>
             <a class="btn btn-unique waves-light" mdbWavesEffect>Print Shedule</a>
           </div>

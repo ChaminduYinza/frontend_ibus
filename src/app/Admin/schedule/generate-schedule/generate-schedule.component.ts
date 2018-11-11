@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, AbstractControl, FormGroup, Validators } from '@angular/forms';
 import { RouteServiceService } from '../../../services/route-service.service';
+import { ScheduleServiceService } from '../../../services/schedule-service.service'
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import { config } from '../../../../../config/config'
+import swal from 'sweetalert2';
+import { Router } from '@angular/router'
 
 
 @Component({
@@ -9,12 +14,11 @@ import { RouteServiceService } from '../../../services/route-service.service';
   styleUrls: ['./generate-schedule.component.scss']
 })
 export class GenerateScheduleAdminComponent implements OnInit {
-
+  @BlockUI() blockUI: NgBlockUI;
   scheduleForm: FormGroup;
-  validTextType: boolean = false;
+  validTextType: any;
   routeList:any;
-
-  constructor(private formBuilder: FormBuilder,private routeService: RouteServiceService) { }
+  constructor(private formBuilder: FormBuilder,private routeService: RouteServiceService,private scheduleService: ScheduleServiceService,private router: Router) { }
 
 
   ngOnInit() {
@@ -51,49 +55,91 @@ export class GenerateScheduleAdminComponent implements OnInit {
     
 
   }
+  textValidationType(e) {
+    e ? (this.validTextType = true) : (this.validTextType = false);
+  }
 
-  public chartType:string = 'line';
+  isFieldValid(form: FormGroup, field: string) {
+    return !form.get(field).valid && form.get(field).touched;
+  }
 
-  public chartDatasets:Array<any> = [
-      {data: [20, 30,32,30,30,29,35,28,30,32], label: 'Fitness score'}
-  ];
+  displayFieldCss(form: FormGroup, field: string) {
+    return {
+      'has-error': this.isFieldValid(form, field),
+      'has-feedback': this.isFieldValid(form, field)
+    };
+  }
 
-  public chartLabels:Array<any> = ['1', '2', '3','4','5', '6', '7','8','9','10'];
 
-  public chartColors:Array<any> = [
-
-      {
-          backgroundColor: 'rgba(151,187,205,0.2)',
-          borderColor: 'rgba(151,187,205,1)',
-          borderWidth: 2,
-          pointBackgroundColor: 'rgba(151,187,205,1)',
-          pointBorderColor: '#fff',
-          pointHoverBackgroundColor: '#fff',
-          pointHoverBorderColor: 'rgba(151,187,205,1)'
-      }
-  ];
-
-  public chartOptions:any = {
-      responsive: true
-  };
-  public chartClicked(e: any): void { }
-  public chartHovered(e: any): void { }
-
-  generateSchedule(){
-    console.log(this.scheduleForm.value.buses);
+  generateSchedule() {
 
     const schedule = {
-        generation: this.scheduleForm.value.generation,
-        population: this.scheduleForm.value.population,
-        crossover: this.scheduleForm.value.crossover,
-        mutation: this.scheduleForm.value.mutation,
-        startTime: this.scheduleForm.value.startTime,
-        endTime: this.scheduleForm.value.endTime,
-        interval: this.scheduleForm.value.interval,
-        routeNo: this.scheduleForm.value.routeNo,
-        
-      };
-      console.log(schedule)
+      generation: this.scheduleForm.value.generation,
+      population: this.scheduleForm.value.population,
+      crossover: this.scheduleForm.value.crossover,
+      mutation: this.scheduleForm.value.mutation,
+      interval: this.scheduleForm.value.interval,
+      routeNo: this.scheduleForm.value.routeNo,
+      
+    };
+    console.log(schedule)
+
+    this.blockUI.start('Resouce allocation is being executing, Please wait!');
+    let requestBody = this.scheduleForm.value;
+    requestBody.recreate = false;
+    requestBody.date = new Date(requestBody.date).setHours(0, 0, 0, 0);
+    this.scheduleService.generateSchedule(requestBody).subscribe((data) => {
+      if (data.data == config.scheduleCreatedStatus) {
+        this.blockUI.stop();
+        this.router.navigateByUrl('User/Schedule')
+        this.showAlert('Success', 'Schedule created successfully.', 'success', "btn btn-success");
+      }
+    }, (error) => {
+      this.blockUI.stop();
+      if (error.msg == config.scheduleAlreadyExsits) {
+        swal({
+          title: 'Are you sure?',
+          text: "There is already a schedule available for today, Do you want to re-create?",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonClass: 'btn btn-success',
+          cancelButtonClass: 'btn btn-danger',
+          confirmButtonText: 'Yes, re-create it!',
+          buttonsStyling: false
+        }).then((result) => {
+          if (result.value) {
+            this.blockUI.start('Resouce allocation is being executing, Please wait!');
+            requestBody.recreate = true;
+            this.scheduleService.generateSchedule(requestBody).subscribe((data) => {
+              this.router.navigateByUrl('User/Schedule')
+              this.showAlert('Success', 'Schedule created successfully.', 'success', "btn btn-success");
+              this.blockUI.stop();
+              this.ngOnInit();
+            }, (error) => {
+              this.showAlert('oops!', error.msg, 'error', "btn btn-danger");
+            })
+          }
+        });
+      }
+    })
   }
+
+    /**
+  * show alert message
+  * @param title 
+  * @param message 
+  * @param type 
+  */
+ showAlert(title, message, type, button) {
+  swal(
+    {
+      title: title,
+      text: message,
+      type: type,
+      confirmButtonClass: button,
+      buttonsStyling: false
+    }
+  )
+}
 
 }

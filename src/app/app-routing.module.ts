@@ -19,6 +19,7 @@ import { GenerateScheduleAdminComponent } from './Admin/schedule/generate-schedu
 import { AddRouteComponent } from './Admin/bus-route/add-route/add-route.component'
 import { BusRouteComponent } from './Admin/bus-route/bus-route.component';
 import { UpdateRouteComponent } from './Admin/bus-route/update-route/update-route.component';
+import { PassengerCountPredictionComponent } from './Admin/passenger-count-prediction/passenger-count-prediction.component';
 import { LoginComponent } from './login/login.component'
 
 // import { AuthGuardService as AuthGuard } from './services/auth-guard-service.service';
@@ -61,9 +62,7 @@ const routes: Routes = [
             { path: 'Route', component: BusRouteComponent },
             { path: 'editRoute/:route_id', component: UpdateRouteComponent },
             { path: 'editBus/:bus_id', component: UpdateBusComponent },
-
-
-
+            { path: 'predictionResults', component: PassengerCountPredictionComponent }
         ]
         // , data: {
         //   expectedRole: ['admin']

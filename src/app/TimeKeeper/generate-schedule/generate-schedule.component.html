@@ -9,18 +9,36 @@
         <div class="row">
           <div class="col-md-12">
             <form [formGroup]="scheduleForm">
-              <div class="md-form">
-                <mat-form-field class="margin">
-                  <mat-select placeholder="Route Number" formControlName="route_no">
-                    <mat-option *ngFor=" let route of routes " [value]="route._id ">{{route.route_no}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-              <div class="md-form">
-                <input type="text" id="iterationCount" formControlName="iterationCount" class="form-control" mdbInputDirective>
-                <label for="iterationCount">Iteration Count</label>
-              </div>
 
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-3">
+                    <mat-form-field class="margin">
+                      <mat-select placeholder="Route Number" formControlName="route_no">
+                        <mat-option *ngFor=" let route of routes " [value]="route._id ">{{route.route_no +" "+ route.route_from +" - "+ route.route_to}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="example-full-width has-label" [ngClass]="{'has-success':validTextType===true}" [ngClass]="displayFieldCss(scheduleForm, 'date')">
+                      <input [min]="minDate" matInput formControlName="date" [matDatepicker]="picker" placeholder="Choose a date" (ngModelChange)="textValidationType($event)">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                      <app-field-error-display [displayError]="isFieldValid(scheduleForm, 'date')" errorMsg="Please enter a valid date">
+                      </app-field-error-display>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="example-full-width has-label">
+                      <input placeholder="Iteration Count" type="text" matInput id="iterationCount" formControlName="iterationCount">
+                    </mat-form-field>
+                    <!-- <div class="md-form">
+                            <input type="text" id="iterationCount" formControlName="iterationCount" class="form-control" mdbInputDirective>
+                            <label for="iterationCount">Iteration Count</label>
+                          </div> -->
+                  </div>
+                </div>
+              </div>
               <button type="submit" class="btn btn-unique waves-light  btn-md" [disabled]="!scheduleForm.valid" (click)="generateSchedule()">Generate New Schedule</button>
               <table class="table table-striped ">
                 <thead>

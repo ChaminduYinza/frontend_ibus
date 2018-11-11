@@ -74,4 +74,17 @@ export class RouteServiceService {
           throw (res);
         }));
   }
+
+  getActiveBussesByRoute(requestBody): Observable<any> {
+    return this.apiService.post('/bus/activeBusesFromRoute', requestBody)
+      .pipe(map(
+        data => {
+          return data;
+        }
+      ),
+        catchError(res => {
+          throw (res);
+        }));
+  }
+
 }

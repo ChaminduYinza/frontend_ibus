@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LocationServiceService } from '../../services/location-service.service'
+import { RouteServiceService } from '../../services/route-service.service'
 import { Subscription } from 'rxjs';
 import { config } from '../../../../config/config'
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
@@ -10,6 +11,8 @@ import { BlockUI, NgBlockUI } from 'ng-block-ui';
 })
 export class LiveTrackingComponent implements OnInit, OnDestroy {
   @BlockUI() blockUI: NgBlockUI;
+  routes: any;
+  busids: any;
   subscription: Subscription;
   public scrollbarOptions = { axis: "y", theme: "dark-thin" };
   latitude: number = 8.5922;
@@ -22,7 +25,8 @@ export class LiveTrackingComponent implements OnInit, OnDestroy {
   markers: any;
   styles = config.mapStyle;
   sortByBus: Boolean = false;
-  sortedBusMarkers = []
+  filteredBusMarkers: any = []
+  busList: any;
   icon: any = {
     url: "../../../assets/images/pin.svg",
     scaledSize: {
@@ -31,31 +35,14 @@ export class LiveTrackingComponent implements OnInit, OnDestroy {
     }
   }
 
-  constructor(private locationService: LocationServiceService) {
+  constructor(private locationService: LocationServiceService, private routeService: RouteServiceService) {
     locationService.SendUserID("Yinza");
   }
-  routes = [
-    '17 - Panadura - Nuwara',
-    '120 - Colombo - Kesbewa'
-  ];
-  busids = [
-    'B001',
-    'B002',
-    'B003',
-    'B004',
-    'B005',
-    'B006',
-    'B007',
-    'B008',
-    'B009',
-    'B0010',
-    'B0011',
-    'B0012'
-  ];
-
-
   ngOnInit() {
     this.setDirections();
+    this.routeService.getRoutes().subscribe((data) => {
+      this.routes = data.data;
+    })
   }
 
   ngOnDestroy() {
@@ -63,9 +50,8 @@ export class LiveTrackingComponent implements OnInit, OnDestroy {
   }
   setDirections() {
     this.subscription = this.locationService.getLocations().subscribe((data) => {
-      if (data['tracker'] != 'No active trackers') {
-        // console.log(data['tracker'])
-        console.log(this.sortByBus)
+      // data = JSON.parse(JSON.stringify(data))
+      if (Array.isArray(data['tracker'])) {
         if (!this.sortByBus) {
           this.markers = []
           data['tracker'].forEach(element => {
@@ -101,8 +87,8 @@ export class LiveTrackingComponent implements OnInit, OnDestroy {
 
     this.markers = [
       {
-        lat: 6.914508,
-        lng: 79.972141,
+        lat: 6.930831,
+        lng: 79.984218,
         icon: '../../../assets/images/pin.png'
       }
     ]
@@ -110,16 +96,20 @@ export class LiveTrackingComponent implements OnInit, OnDestroy {
   }
 
   onChangeRoute(event) {
-
+    this.routeService.getActiveBussesByRoute({ route_id: event.value, onGoingStatus: "Active" }).subscribe((data) => {
+      this.busids = data.data
+    })
   }
   onChangeBus(event) {
+    let scope = this
     this.blockUI.start('Loading...');
     if (this.markers.length > 0) {
-      this.sortedBusMarkers = []
+      this.filteredBusMarkers = []
       this.sortByBus = true;
       this.markers.forEach(function (element, idx) {
         if (element.bus_id == event.value) {
-          this.sortedBusMarkers.push(element)
+          console.log(element)
+          scope.filteredBusMarkers.push(element)
         }
       });
     } else {
