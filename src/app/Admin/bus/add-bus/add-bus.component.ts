@@ -40,6 +40,20 @@ export class AddBusComponent implements OnInit {
 
 
   }
+  demo(){
+
+    this.busForm.patchValue({
+      busNo: "JP-4242",
+      busType: "NON A/C",
+      owner: "Shaman",
+      ownerContactNo: "074587412",
+      noOfSeats: "56",
+      routeNo: "120-Kesbewa Colombo",
+      driver: "Rastham",
+      driverContactNo: "071458258"
+    })
+
+  }
 
   getRoutes() {
     this.routeService.getRoutes().subscribe((data) => {

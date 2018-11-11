@@ -27,6 +27,17 @@ export class AddRouteComponent implements OnInit {
   get stationForms() {
     return this.routeForm.get('stations') as FormArray
   }
+  demo(){
+
+    this.routeForm.patchValue({
+      route_no: "David",
+      total_km: "Perera",
+      route_from:"dav.pe@gmail.com",
+      route_to:"0714584754",
+    })
+
+  }
+  
   addPhone() {
     const station = this.formBuilder.group({
       name: [null, Validators.required],

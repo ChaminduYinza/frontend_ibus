@@ -49,7 +49,7 @@
                 </div>
                 <span class="font-weight-bold indigo-text ml-2">1</span>
               </div>
-              <input class="form-check-input" type="checkbox" id="checkbox11">
+              <input class="form-check-input" type="checkbox" id="checkbox11" (change)="settings()">
               <label class="form-check-label" for="checkbox11">Use Recommended settings</label>
               <div class="row">
                 <div class="col">
@@ -76,75 +76,24 @@
                   <label for="form3">Select Route :</label>
                 </div>
                 <div class="col">
-                  <input mdbInputDirective type="text" id="route" formControlName="route" class="form-control form-control-sm">
+                  <!-- <input mdbInputDirective type="text" id="route" formControlName="route" class="form-control form-control-sm"> -->
+          
+                  <mat-select placeholder="Route No" class="form-control" formControlName="routeNo" mdbInputDirective>
+                      <mat-option>None</mat-option>
+                      <mat-option  *ngFor="let route of routeList" [value]="route._id">{{route.route_no}}</mat-option>
+                    </mat-select>
                 </div>
               </div>
+
               <div class="row" style="margin-top:15px">
                 <div class="col">
-                  <label for="form3">Allocate Bus :</label>
-                </div>
-                <div class="col">
-                  <input mdbInputDirective type="text" id="buses" formControlName="buses" class="form-control form-control-sm">
-                </div>
-              </div>
-              <div class="row" style="margin-top:15px">
-                <div class="col">
-                  <button type="submit" class="btn btn-unique waves-light  btn-md" [disabled]="!scheduleForm.valid" (click)="generateSchedule()">Generate</button>
+                  <button type="submit" class="btn btn-unique waves-light  btn-md"  (click)="generateSchedule()">Generate</button>
                   <button type="button" class="btn btn-outline-primary btn-md" mdbWavesEffect><b>Reset</b></button>
                 </div>
               </div>
 
             </form>
           </div>
-
-          <div class="col-md-6" style="font-size: 130%;font-weight: 600">
-            <div style="display: block">
-              <canvas mdbChart [chartType]="chartType" [datasets]="chartDatasets" [labels]="chartLabels" [colors]="chartColors"
-                [options]="chartOptions" [legend]="true" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-              </canvas>
-            </div>
-            <div class="row">
-              <div class="col">
-                <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th scope="col">Best Fitness Score: 50.99</th>
-                      <th scope="col">Allocated Buses</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">3</th>
-                      <th>[YK-24524],
-                        [GD-2424],
-                        [WE-2424]
-                      </th>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <th>[YK-24524],
-                        [GD-2424],
-                        [WE-2424]
-                      </th>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <th>[YK-24524],
-                        [GD-2424],
-                      </th>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="row" style="margin-top:15px">
-              <div class="col">
-                <button type="button" class="btn btn-unique waves-light  btn-md">Add to Schedule</button>
-
-              </div>
-            </div>
-          </div>
-
 
         </div>
       </div>

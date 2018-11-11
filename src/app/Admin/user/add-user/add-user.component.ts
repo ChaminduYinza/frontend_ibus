@@ -50,6 +50,17 @@ export class AddUserComponent implements OnInit {
       'has-feedback': this.isFieldValid(form, field)
     };
   }
+  demo(){
+
+    this.userForm.patchValue({
+      firstName: "David",
+      lastName: "Perera",
+      email:"dav.pe@gmail.com",
+      contactNo:"0714584754",
+      password:"123456"
+    })
+
+  }
   registerUser() {
 
     const user = {

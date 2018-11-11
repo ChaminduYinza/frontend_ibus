@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, AbstractControl, FormGroup, Validators } from '@angular/forms';
+import { RouteServiceService } from '../../../services/route-service.service';
+
 
 @Component({
   selector: 'app-generate-schedule',
@@ -10,10 +12,14 @@ export class GenerateScheduleAdminComponent implements OnInit {
 
   scheduleForm: FormGroup;
   validTextType: boolean = false;
-  constructor(private formBuilder: FormBuilder) { }
+  routeList:any;
+
+  constructor(private formBuilder: FormBuilder,private routeService: RouteServiceService) { }
 
 
   ngOnInit() {
+
+    this.getRoutes();
 
     this.scheduleForm = this.formBuilder.group({
         generation: [null, Validators],
@@ -23,12 +29,29 @@ export class GenerateScheduleAdminComponent implements OnInit {
         startTime: [null, Validators.required],
         endTime: [null, Validators.required],
         interval:[null,Validators.required],
-        route:[null,Validators.required],
-        buses:[null,Validators.required],
+        routeNo:[null,Validators.required],
+
 
       });
       
   }
+  getRoutes() {
+    this.routeService.getRoutes().subscribe((data) => {
+      this.routeList = data.data;
+    })
+  }
+  settings(){
+
+    this.scheduleForm.patchValue({
+        generation: 250,
+        population: 15,
+        crossover: 0.6,
+        mutation: 0.1
+      });
+    
+
+  }
+
   public chartType:string = 'line';
 
   public chartDatasets:Array<any> = [
@@ -58,6 +81,19 @@ export class GenerateScheduleAdminComponent implements OnInit {
 
   generateSchedule(){
     console.log(this.scheduleForm.value.buses);
+
+    const schedule = {
+        generation: this.scheduleForm.value.generation,
+        population: this.scheduleForm.value.population,
+        crossover: this.scheduleForm.value.crossover,
+        mutation: this.scheduleForm.value.mutation,
+        startTime: this.scheduleForm.value.startTime,
+        endTime: this.scheduleForm.value.endTime,
+        interval: this.scheduleForm.value.interval,
+        routeNo: this.scheduleForm.value.routeNo,
+        
+      };
+      console.log(schedule)
   }
 
 }

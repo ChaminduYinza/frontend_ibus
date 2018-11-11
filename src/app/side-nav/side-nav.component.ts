@@ -63,11 +63,11 @@ export class SideNavComponent implements OnInit {
     routerLink: "./Bus"
   },
 
-  {
-    icon: "assignment",
-    item: "Generate Schedules",
-    routerLink: "./GenerateSchedule"
-  },
+  // {
+  //   icon: "assignment",
+  //   item: "Generate Schedules",
+  //   routerLink: "./GenerateSchedule"
+  // },
   {
     icon: "assignment",
     item: "Bus Schedules",
@@ -78,11 +78,11 @@ export class SideNavComponent implements OnInit {
     item: "Profile",
     routerLink: "./Profile"
   },
-  {
-    icon: "settings",
-    item: "Settings",
-    routerLink: "./Settings"
-  }
+  // {
+  //   icon: "settings",
+  //   item: "Settings",
+  //   routerLink: "./Settings"
+  // }
   ]
   constructor(private router: Router, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private userService: UserService) {
     this.mobileQuery = media.matchMedia('(max-width: 700px)');
