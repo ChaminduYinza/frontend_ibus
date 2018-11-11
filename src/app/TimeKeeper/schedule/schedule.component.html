@@ -1,3 +1,46 @@
+<div mdbModal #orangeModalSubscription="mdb-modal"  class="modal fade" id="orangeModalSubscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-warning" role="document">
+    <!--Content-->
+    <div class="modal-content modal-zindex">
+      <!--Header-->
+      <div class="modal-header text-center">
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2">BUS ALLOCATION</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+        <div class="card card-cascade narrower">
+          <div class="view overlay hm-white-slight waves-light " mdbWavesEffect>
+            <h1 class="table-heading"></h1>
+          </div>
+          <div class="card-body">
+            <table id="contentToConvert1" class="table table-striped ">
+              <thead>
+                <tr>
+                  <th>Time Slot</th>
+                  <th>Allocation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor=" let row of modalData ">
+                  <td>{{row.time}}</td>
+                  <td>{{row.busList}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
 <div class="schedule-container">
   <div class="col-md-12">
     <div class="card card-cascade narrower">
@@ -48,7 +91,7 @@
               <td>{{row.time_slot}}</td>
               <td>{{row.fixedInterval}} Mins</td>
               <td>{{row.numberOfBusses}}</td>
-              <td matTooltip={{row.busNumbers}}>[ {{row.allocation}} ]</td>
+              <td (click)="openScheduleModal(row)" matTooltip={{row.busNumbers}}>[ {{row.allocation}} ]</td>
             </tr>
           </tbody>
         </table>
@@ -56,3 +99,4 @@
     </div>
   </div>
 </div>
+

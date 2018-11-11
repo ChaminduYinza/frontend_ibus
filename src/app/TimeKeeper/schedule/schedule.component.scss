@@ -11,8 +11,7 @@
 }
 
 th {
-    font-weight: bold;
-    // font-size: 80% !important;
+    font-weight: bold; // font-size: 80% !important;
 }
 
 table,
@@ -32,4 +31,8 @@ mat-form-field {
     // font-size: 48%;
     width: 100%;
     font-weight: 1000 !important;
+}
+
+.modal-dialog.modal-notify.modal-warning .modal-header {
+    background-color: #8a0507;
 }

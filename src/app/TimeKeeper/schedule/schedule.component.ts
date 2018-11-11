@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { ScheduleServiceService } from '../../services/schedule-service.service';
 import { RouteServiceService } from '../../services/route-service.service';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
@@ -22,6 +22,8 @@ export class ScheduleComponent implements OnInit {
   allocation: any = []
   scheduleForm: FormGroup;
   validTextType: boolean;
+  modalData: any = [];
+  @ViewChild("orangeModalSubscription") allcoationModal;
   constructor(
     private scheduleService: ScheduleServiceService,
     private routeService: RouteServiceService,
@@ -54,7 +56,6 @@ export class ScheduleComponent implements OnInit {
   }
 
   viewSchedule() {
-
     const formValues = this.scheduleForm.value
     this.blockUI.start('Loading...');
     this.scheduleService.getSchedule({ route: formValues.route, date: new Date(formValues.date).setHours(0, 0, 0, 0) }).subscribe((data) => {
@@ -86,6 +87,39 @@ export class ScheduleComponent implements OnInit {
       pdf.save('MYPdf.pdf'); // Generated PDF   
     });
   }
+
+
+
+  openScheduleModal(data) {
+    var startTime = data.time_slot.split(" -")[0]
+    var timeArray = []
+    this.modalData = []
+
+    var date = new Date("October 13, 2099 " + startTime)
+    data.allocation.forEach((element) => {
+      date = addMinutes(date, data.fixedInterval)
+      timeArray.push({ startTime: startTime, endTime: date.toString().replace(" GMT+0530 (India Standard Time)", "").split("2099 ")[1] })
+      startTime = date.toString().replace(" GMT+0530 (India Standard Time)", "").split("2099 ")[1]
+    })
+    timeArray.forEach((element, i) => {
+console.log(element)
+
+      this.modalData.push({
+        time: element.startTime + " - " + element.endTime,
+        busList: data.busNumbers[i]
+      })
+    });
+
+    console.log(this.modalData)
+
+    function addMinutes(date, minutes) {
+      return new Date(date.getTime() + minutes * 60000);
+    }
+
+    this.allcoationModal.show();
+  }
+
+
 
   /**
    * show alert message

@@ -23,3 +23,7 @@ div {
     max-height: 100%;
     background-repeat: no-repeat;
 }
+
+.modal-backdrop.in {
+    z-index: -1 !important;
+}

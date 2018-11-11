@@ -61,8 +61,10 @@ export class GenerateScheduleComponent implements OnInit {
     this.blockUI.start('Resouce allocation is being executing, Please wait!');
     let requestBody = this.scheduleForm.value;
     requestBody.recreate = false;
+    requestBody.type = "ILS"
     requestBody.date = new Date(requestBody.date).setHours(0, 0, 0, 0);
     this.scheduleService.generateSchedule(requestBody).subscribe((data) => {
+      // console.log(data)
       if (data.data == config.scheduleCreatedStatus) {
         this.blockUI.stop();
         this.router.navigateByUrl('User/Schedule')

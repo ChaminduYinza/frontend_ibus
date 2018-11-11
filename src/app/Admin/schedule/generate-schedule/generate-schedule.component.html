@@ -14,11 +14,10 @@
           <div class="col-md-6" style="font-weight:600">
             <form [formGroup]="scheduleForm">
               <div class="d-flex">
-                <label for="generation"  style="margin-right:15px">Generation</label>
+                <label for="generation" style="margin-right:15px">Generation</label>
                 <span class="font-weight-bold indigo-text mr-2">1</span>
                 <div class="range-field w-75">
-                  <input type="range" id="generation" formControlName="generation" class="form-control custom-range"
-                  min="0" max="1000" step="50">
+                  <input type="range" id="generation" formControlName="generation" class="form-control custom-range" min="0" max="1000" step="50">
                 </div>
                 <span class="font-weight-bold indigo-text ml-2">1000</span>
               </div>
@@ -26,8 +25,7 @@
                 <label for="population" style="margin-right:15px">Population</label>
                 <span class="font-weight-bold indigo-text mr-2">1</span>
                 <div class="range-field w-75">
-                  <input type="range" id="population" formControlName="population" class="form-control custom-range"
-                  min="0" max="100" step="10">
+                  <input type="range" id="population" formControlName="population" class="form-control custom-range" min="0" max="100" step="10">
                 </div>
                 <span class="font-weight-bold indigo-text ml-2">100</span>
               </div>
@@ -35,8 +33,7 @@
                 <label for="crossover" style="margin-right:15px">Crossover</label>
                 <span class="font-weight-bold indigo-text mr-2">0</span>
                 <div class="range-field w-75">
-                  <input type="range" id="crossover" formControlName="crossover" class="form-control custom-range"
-                  min="0" max="1" step="0.1">
+                  <input type="range" id="crossover" formControlName="crossover" class="form-control custom-range" min="0" max="1" step="0.1">
                 </div>
                 <span class="font-weight-bold indigo-text ml-2">1</span>
               </div>
@@ -44,8 +41,7 @@
                 <label for="mutation" style="margin-right:15px">Mutation</label>
                 <span class="font-weight-bold indigo-text mr-2">0</span>
                 <div class="range-field w-75">
-                    <input type="range" id="mutation" formControlName="mutation" class="form-control custom-range"
-                    min="0" max="1" step="0.01">
+                  <input type="range" id="mutation" formControlName="mutation" class="form-control custom-range" min="0" max="1" step="0.01">
                 </div>
                 <span class="font-weight-bold indigo-text ml-2">1</span>
               </div>
@@ -53,30 +49,24 @@
               <label class="form-check-label" for="checkbox11">Use Recommended settings</label>
               <div class="row" style="margin-top:15px">
                 <div class="col">
-                  <label for="form3">Set Interval :</label>
-                </div>
-                <div class="col">
-                  <input type="number" min="5" max="30" step="5" id="interval" formControlName="interval" class="form-control form-control-sm">
-                </div>
-              </div>
-              <div class="row" style="margin-top:15px">
-                <div class="col">
                   <label for="form3">Select Route :</label>
                 </div>
                 <div class="col">
                   <!-- <input mdbInputDirective type="text" id="route" formControlName="route" class="form-control form-control-sm"> -->
-          
-                  <mat-select placeholder="Route No" class="form-control" formControlName="routeNo">
-                      <mat-option>None</mat-option>
-                      <mat-option  *ngFor="let route of routeList" [value]="route._id">{{route.route_no}}</mat-option>
-                    </mat-select>
+
+                  <mat-select placeholder="Route No" class="form-control" formControlName="route_no">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let route of routeList" [value]="route._id">{{route.route_no}}</mat-option>
+                  </mat-select>
                 </div>
               </div>
 
               <div class="row" style="margin-top:15px">
                 <div class="col">
-                  <button type="submit" class="btn btn-unique waves-light  btn-md"   (click)="generateSchedule()">Generate Schedule</button>
-                  <button type="button" class="btn btn-outline-primary btn-md" mdbWavesEffect><b>Print Pdf</b></button>
+                  <button type="submit" class="btn btn-unique waves-light  btn-md" (click)="generateSchedule()">Generate Schedule</button>
+                  <button type="button" class="btn btn-outline-primary btn-md" mdbWavesEffect>
+                    <b>Print Pdf</b>
+                  </button>
                 </div>
               </div>
 
@@ -100,13 +90,13 @@
               <td>3</td>
               <td matTooltip="A Detailed view of how busses are allocated will be shown here">[ 1 , 2 ]</td>
             </tr>
-          
+
 
           </tbody>
         </table>
       </div>
       <!--/.Panel-->
-      
+
     </div>
   </div>
 </div>

@@ -17,8 +17,8 @@ export class GenerateScheduleAdminComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
   scheduleForm: FormGroup;
   validTextType: any;
-  routeList:any;
-  constructor(private formBuilder: FormBuilder,private routeService: RouteServiceService,private scheduleService: ScheduleServiceService,private router: Router) { }
+  routeList: any;
+  constructor(private formBuilder: FormBuilder, private routeService: RouteServiceService, private scheduleService: ScheduleServiceService, private router: Router) { }
 
 
   ngOnInit() {
@@ -26,33 +26,28 @@ export class GenerateScheduleAdminComponent implements OnInit {
     this.getRoutes();
 
     this.scheduleForm = this.formBuilder.group({
-        generation: [null, Validators],
-        population: [null, Validators],
-        crossover: [null, Validators],
-        mutation: [null, Validators],
-        startTime: [null, Validators.required],
-        endTime: [null, Validators.required],
-        interval:[null,Validators.required],
-        routeNo:[null,Validators.required],
+      generation: [null, Validators],
+      population: [null, Validators],
+      crossover: [null, Validators],
+      mutation: [null, Validators],
+      route_no: [null, Validators.required],
+    });
 
-
-      });
-      
   }
   getRoutes() {
     this.routeService.getRoutes().subscribe((data) => {
       this.routeList = data.data;
     })
   }
-  settings(){
+  settings() {
 
     this.scheduleForm.patchValue({
-        generation: 250,
-        population: 15,
-        crossover: 0.6,
-        mutation: 0.1
-      });
-    
+      generation: 250,
+      population: 15,
+      crossover: 0.6,
+      mutation: 0.1
+    });
+
 
   }
   textValidationType(e) {
@@ -73,27 +68,16 @@ export class GenerateScheduleAdminComponent implements OnInit {
 
   generateSchedule() {
 
-    const schedule = {
-      generation: this.scheduleForm.value.generation,
-      population: this.scheduleForm.value.population,
-      crossover: this.scheduleForm.value.crossover,
-      mutation: this.scheduleForm.value.mutation,
-      interval: this.scheduleForm.value.interval,
-      routeNo: this.scheduleForm.value.routeNo,
-      
-    };
-    console.log(schedule)
+
 
     this.blockUI.start('Resouce allocation is being executing, Please wait!');
     let requestBody = this.scheduleForm.value;
     requestBody.recreate = false;
-    requestBody.date = new Date(requestBody.date).setHours(0, 0, 0, 0);
+    requestBody.type = "GA";
+    requestBody.date = new Date().setHours(0, 0, 0, 0);
     this.scheduleService.generateSchedule(requestBody).subscribe((data) => {
-      if (data.data == config.scheduleCreatedStatus) {
-        this.blockUI.stop();
-        this.router.navigateByUrl('User/Schedule')
-        this.showAlert('Success', 'Schedule created successfully.', 'success', "btn btn-success");
-      }
+      this.showAlert('Success', 'Schedule created successfully.', 'success', "btn btn-success");
+      this.blockUI.stop();
     }, (error) => {
       this.blockUI.stop();
       if (error.msg == config.scheduleAlreadyExsits) {
@@ -111,10 +95,8 @@ export class GenerateScheduleAdminComponent implements OnInit {
             this.blockUI.start('Resouce allocation is being executing, Please wait!');
             requestBody.recreate = true;
             this.scheduleService.generateSchedule(requestBody).subscribe((data) => {
-              this.router.navigateByUrl('User/Schedule')
               this.showAlert('Success', 'Schedule created successfully.', 'success', "btn btn-success");
               this.blockUI.stop();
-              this.ngOnInit();
             }, (error) => {
               this.showAlert('oops!', error.msg, 'error', "btn btn-danger");
             })
@@ -124,22 +106,22 @@ export class GenerateScheduleAdminComponent implements OnInit {
     })
   }
 
-    /**
-  * show alert message
-  * @param title 
-  * @param message 
-  * @param type 
-  */
- showAlert(title, message, type, button) {
-  swal(
-    {
-      title: title,
-      text: message,
-      type: type,
-      confirmButtonClass: button,
-      buttonsStyling: false
-    }
-  )
-}
+  /**
+* show alert message
+* @param title 
+* @param message 
+* @param type 
+*/
+  showAlert(title, message, type, button) {
+    swal(
+      {
+        title: title,
+        text: message,
+        type: type,
+        confirmButtonClass: button,
+        buttonsStyling: false
+      }
+    )
+  }
 
 }
