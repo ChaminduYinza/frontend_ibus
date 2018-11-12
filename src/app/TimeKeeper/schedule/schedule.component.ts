@@ -11,6 +11,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { config } from 'config/config';
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
@@ -23,6 +24,7 @@ export class ScheduleComponent implements OnInit {
   scheduleForm: FormGroup;
   validTextType: boolean;
   modalData: any = [];
+  notEnoughtBussesFromConfig:any = config.notEnoughtBuses;
   @ViewChild("orangeModalSubscription") allcoationModal;
   constructor(
     private scheduleService: ScheduleServiceService,

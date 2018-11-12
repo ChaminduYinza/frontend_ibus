@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     };
 
     this.userService.attemptLogin(loginUser).subscribe((data) => {
-      data.data.role == 'Admin' ? this.router.navigateByUrl('Admin/User') : this.router.navigateByUrl('User')
+      data.data.role == 'Admin' ? this.router.navigateByUrl('Admin/User') : this.router.navigateByUrl('TimeKeeper')
     }, (err) => {
       console.log(err)
     })

@@ -13,6 +13,7 @@ export class UpdateUserComponent implements OnInit {
   user_id: any;
   userEditForm: FormGroup;
   validTextType: boolean = false;
+  loggedUserRole: any;
 
   constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(params => this.user_id = params);
@@ -30,6 +31,7 @@ export class UpdateUserComponent implements OnInit {
 
     });
 
+    this.loggedUserRole = this.userService.getLoggedInUser().loggedInUserRole
     const query = {
       "user_id": this.user_id.user_id
     };
@@ -39,8 +41,8 @@ export class UpdateUserComponent implements OnInit {
       this.userEditForm.patchValue({
         firstName: data.data.first_name,
         lastName: data.data.last_name,
-        email:data.data.email,
-        contactNo:data.data.contact_no
+        email: data.data.email,
+        contactNo: data.data.contact_no
       })
     });
 
@@ -69,7 +71,7 @@ export class UpdateUserComponent implements OnInit {
     };
 
     const user = {
-      user_id:this.user_id.user_id,
+      user_id: this.user_id.user_id,
       first_name: this.userEditForm.value.firstName,
       last_name: this.userEditForm.value.lastName,
       // email: this.userEditForm.value.email,
@@ -83,7 +85,7 @@ export class UpdateUserComponent implements OnInit {
         Swal("Sucess!", res.msg, "success");
         // this.userEditForm.reset();
       } else {
-        Swal("Error!",res.msg, "warning");
+        Swal("Error!", res.msg, "warning");
 
       }
 

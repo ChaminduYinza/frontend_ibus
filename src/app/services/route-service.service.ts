@@ -87,4 +87,19 @@ export class RouteServiceService {
         }));
   }
 
+  getActiveBussesByStartLocation(requestBody): Observable<any> {
+    return this.apiService.post('/tracking/byLocation', requestBody)
+      .pipe(map(
+        data => {
+          return data;
+        }
+      ),
+        catchError(res => {
+          throw (res);
+        }));
+  }
+
+
+  
+
 }

@@ -1,12 +1,13 @@
 export const config = {
   production: false,
-  api_url: 'http://0010adcc.ngrok.io/api',
+  api_url: 'http://localhost:5000/api',
   // api_url: 'http://localhost:5000/api',
-  image_upload_url: "http://localhost:5200/api/image/upload",
-  image_load_url: "http://localhost:5200/uploads/",
-  file_upload_URL: "http://localhost:5200/api/file/upload",
+  image_upload_url: "http://localhost:5000/api/image/upload",
+  image_load_url: "http://localhost:5000/uploads/",
+  file_upload_URL: "http://localhost:5000/api/file/upload",
   scheduleCreatedStatus: "Schedule Created",
   scheduleAlreadyExsits: "Schedule Already Exists",
+  notEnoughtBuses: "Number of busses are not enough to generate the schedule ",
   socket_url: 'http://localhost:5000/',
   mapStyle: [
     {

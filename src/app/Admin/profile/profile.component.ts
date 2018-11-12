@@ -12,9 +12,9 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService,private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
   userID: any;
-  emailID:any;
+  emailID: any;
   userEditForm: FormGroup;
 
   ngOnInit() {
@@ -73,8 +73,13 @@ export class ProfileComponent implements OnInit {
     })
   }
   changePsw(email) {
-    console.log(email)
-    this.router.navigate(['Admin/ChangePassword', email]);
+    if (this.userService.getLoggedInUser().loggedInUserRole === "Admin") {
+      this.router.navigate(['Admin/ChangePassword', email]);
+
+    } else {
+      this.router.navigate(['TimeKeeper/ChangePassword', email]);
+
+    }
   }
 
 }

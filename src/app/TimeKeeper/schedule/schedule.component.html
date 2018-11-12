@@ -1,5 +1,5 @@
-<div mdbModal #orangeModalSubscription="mdb-modal" class="modal fade" id="orangeModalSubscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
+<div mdbModal #orangeModalSubscription="mdb-modal" class="modal fade" id="orangeModalSubscription" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-notify modal-warning" role="document">
     <div class="modal-content modal-zindex">
       <div class="modal-header text-center">
@@ -81,10 +81,11 @@
           </thead>
           <tbody>
             <tr *ngFor=" let row of allocation ">
-              <td>{{row.time_slot}}</td>
-              <td>{{row.fixedInterval}} Mins</td>
-              <td>{{row.numberOfBusses}}</td>
-              <td (click)="openScheduleModal(row)" matTooltip={{row.busNumbers}}>[ {{row.allocation}} ]</td>
+              <td matTooltip="{{row.message.includes(notEnoughtBussesFromConfig)?row.message:''}}" [ngClass]="row.message.includes(notEnoughtBussesFromConfig)?'not-enought':''">{{row.time_slot}}</td>
+              <td matTooltip="{{row.message.includes(notEnoughtBussesFromConfig)?row.message:''}}" [ngClass]="row.message.includes(notEnoughtBussesFromConfig)?'not-enought':''">{{row.fixedInterval}} Mins</td>
+              <td matTooltip="{{row.message.includes(notEnoughtBussesFromConfig)?row.message:''}}" [ngClass]="row.message.includes(notEnoughtBussesFromConfig)?'not-enought':''">{{row.numberOfBusses}}</td>
+              <td matTooltip="{{row.message.includes(notEnoughtBussesFromConfig)?row.message:''}}" [ngClass]="row.message.includes(notEnoughtBussesFromConfig)?'not-enought':''"
+                (click)="openScheduleModal(row)" matTooltip={{row.busNumbers}}>[ {{row.allocation}} ]</td>
             </tr>
           </tbody>
         </table>

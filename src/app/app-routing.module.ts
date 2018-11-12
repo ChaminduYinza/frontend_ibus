@@ -21,34 +21,28 @@ import { BusRouteComponent } from './Admin/bus-route/bus-route.component';
 import { UpdateRouteComponent } from './Admin/bus-route/update-route/update-route.component';
 import { PassengerCountPredictionComponent } from './Admin/passenger-count-prediction/passenger-count-prediction.component';
 import { LoginComponent } from './login/login.component'
-import {ProfileComponent} from './Admin/profile/profile.component'
-
-// import { AuthGuardService as AuthGuard } from './services/auth-guard-service.service';
+import { ProfileComponent } from './Admin/profile/profile.component'
 
 
 const routes: Routes = [
     { path: '', redirectTo: 'Welcome', pathMatch: 'full' },
     { path: 'Welcome', component: LandingPageComponent },
     { path: 'Login', component: LoginComponent },
-    //   { path: 'DepartmentSummary', component: DepartmentSummeryComponent },
     {
-        path: 'User', component: SideNavComponent,
-        // canActivate: [AuthGuard],
+
+
+        path: 'TimeKeeper', component: SideNavComponent,
         children: [
             { path: 'Schedule', component: ScheduleComponent },
-            { path: 'Reports', component: ReportsComponent },
             { path: 'Livemap', component: LiveTrackingComponent },
             { path: 'GenerateSchedule', component: GenerateScheduleComponent },
-            //   { path: 'Delivery', component: DeliveryComponent },
+            { path: 'Profile', component: ProfileComponent },
+            { path: 'ChangePassword/:email_id', component: ChangePasswordComponent },
             { path: '**', component: LiveTrackingComponent, pathMatch: 'full' }
         ]
-        // , data: {
-        //   expectedRole: ['admin']
-        // }
     },
     {
         path: 'Admin', component: SideNavComponent,
-        // canActivate: [AuthGuard],
         children: [
             { path: 'AddUser', component: AddUserComponent },
             { path: 'User', component: UserComponent },
@@ -66,9 +60,6 @@ const routes: Routes = [
             { path: 'editBus/:bus_id', component: UpdateBusComponent },
             { path: 'predictionResults', component: PassengerCountPredictionComponent }
         ]
-        // , data: {
-        //   expectedRole: ['admin']
-        // }
     },
 
 ];
