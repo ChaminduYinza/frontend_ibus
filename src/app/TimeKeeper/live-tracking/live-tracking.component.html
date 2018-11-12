@@ -51,7 +51,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <mat-form-field class="margin">
-                                <mat-select placeholder="Route Number" (selectionChange)="onChangeRoute($event)">
+                                <mat-select placeholder="Route Number" (selectionChange)="onChangeRoute(route)">
                                     <mat-option *ngFor="let route of routes" [value]="route._id">{{route.route_no +" "+ route.route_from +" - "+ route.route_to}}</mat-option>
                                 </mat-select>
                             </mat-form-field>

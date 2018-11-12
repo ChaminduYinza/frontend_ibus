@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ScheduleServiceService } from '../../services/schedule-service.service';
 import { RouteServiceService } from '../../services/route-service.service';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
@@ -102,15 +102,11 @@ export class ScheduleComponent implements OnInit {
       startTime = date.toString().replace(" GMT+0530 (India Standard Time)", "").split("2099 ")[1]
     })
     timeArray.forEach((element, i) => {
-console.log(element)
-
       this.modalData.push({
         time: element.startTime + " - " + element.endTime,
         busList: data.busNumbers[i]
       })
     });
-
-    console.log(this.modalData)
 
     function addMinutes(date, minutes) {
       return new Date(date.getTime() + minutes * 60000);
@@ -120,6 +116,9 @@ console.log(element)
   }
 
 
+  closeModal() {
+    this.allcoationModal.hide();
+  }
 
   /**
    * show alert message

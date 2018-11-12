@@ -42,6 +42,7 @@ export class LiveTrackingComponent implements OnInit, OnDestroy {
     this.setDirections();
     this.routeService.getRoutes().subscribe((data) => {
       this.routes = data.data;
+      console.log(this.routes)
     })
   }
 
@@ -50,6 +51,7 @@ export class LiveTrackingComponent implements OnInit, OnDestroy {
   }
   setDirections() {
     this.subscription = this.locationService.getLocations().subscribe((data) => {
+      console.log(data)
       // data = JSON.parse(JSON.stringify(data))
       if (Array.isArray(data['tracker'])) {
         if (!this.sortByBus) {
@@ -95,8 +97,9 @@ export class LiveTrackingComponent implements OnInit, OnDestroy {
 
   }
 
-  onChangeRoute(event) {
-    this.routeService.getActiveBussesByRoute({ route_id: event.value, onGoingStatus: "Active" }).subscribe((data) => {
+  onChangeRoute(route) {
+    console.log(route)
+    this.routeService.getActiveBussesByRoute({ route_id: route._id, onGoingStatus: "Active" }).subscribe((data) => {
       this.busids = data.data
     })
   }
