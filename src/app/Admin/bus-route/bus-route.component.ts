@@ -45,7 +45,6 @@ export class BusRouteComponent implements OnInit {
                     "route_id": route_id
                 };
 
-
                 this.routeService.removeRoute(query).subscribe((res) => {
 
                     if (res.status) {
@@ -68,6 +67,8 @@ export class BusRouteComponent implements OnInit {
     }
     openScheduleModal(data) {
 
+        // console.log(data);
+        this.modalData=data;
         this.allcoationModal.show();
     }
     onOpen(event: any) {

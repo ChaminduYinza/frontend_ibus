@@ -1,6 +1,6 @@
 export const config = {
   production: false,
-  api_url: 'http://0010adcc.ngrok.io/api',
+  api_url: 'http://55976727.ngrok.io/api',
   // api_url: 'http://localhost:5000/api',
   image_upload_url: "http://localhost:5200/api/image/upload",
   image_load_url: "http://localhost:5200/uploads/",

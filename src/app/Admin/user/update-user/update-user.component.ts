@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, AbstractControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user-service.service'
+import { BusService } from '../../../services/bus-service.service'
 import Swal from 'sweetalert2'
 
 @Component({
@@ -12,11 +13,13 @@ import Swal from 'sweetalert2'
 export class UpdateUserComponent implements OnInit {
   user_id: any;
   userEditForm: FormGroup;
+  busList:any;
+  userData:any
   validTextType: boolean = false;
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private busService: BusService,private userService: UserService, private formBuilder: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(params => this.user_id = params);
-    console.log(this.user_id.user_id)
+
   }
 
   ngOnInit() {
@@ -26,8 +29,6 @@ export class UpdateUserComponent implements OnInit {
       lastName: [null, Validators.required],
       email: [null, Validators.required],
       contactNo: [null, Validators.required],
-
-
     });
 
     const query = {
@@ -35,15 +36,25 @@ export class UpdateUserComponent implements OnInit {
     };
 
     this.userService.getUserbyId(query).subscribe((data) => {
-      console.log(data.data);
+
+      this.userData= data.data;
+      console.log(this.userData);
       this.userEditForm.patchValue({
         firstName: data.data.first_name,
         lastName: data.data.last_name,
         email:data.data.email,
         contactNo:data.data.contact_no
+      
       })
     });
+    this.getBuses();
 
+  }
+  getBuses() {
+    this.busService.getBus().subscribe((data) => {
+
+      this.busList = data.data;
+    })
   }
   textValidationType(e) {
     if (e) {
@@ -72,7 +83,7 @@ export class UpdateUserComponent implements OnInit {
       user_id:this.user_id.user_id,
       first_name: this.userEditForm.value.firstName,
       last_name: this.userEditForm.value.lastName,
-      // email: this.userEditForm.value.email,
+      bus_id: this.userEditForm.value.busNo,
       contact_no: this.userEditForm.value.contactNo,
 
     };

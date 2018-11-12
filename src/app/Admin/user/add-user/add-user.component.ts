@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, AbstractControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user-service.service'
+import { BusService } from '../../../services/bus-service.service'
 import Swal from 'sweetalert2'
 
 
@@ -12,6 +13,7 @@ import Swal from 'sweetalert2'
 })
 export class AddUserComponent implements OnInit {
   userForm: FormGroup;
+  busList: any;
   validTextType: boolean = false;
   userRole = [
     'Admin',
@@ -19,7 +21,7 @@ export class AddUserComponent implements OnInit {
     'Driver',
   ];
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
+  constructor(private busService: BusService, private formBuilder: FormBuilder, private userService: UserService) { }
 
   ngOnInit() {
     this.userForm = this.formBuilder.group({
@@ -28,9 +30,17 @@ export class AddUserComponent implements OnInit {
       email: [null, Validators.required],
       contactNo: [null, Validators.required],
       password: [null, Validators.required],
-      userRole:[null, Validators.required]
+      userRole: [null, Validators.required],
+      busNo: [null, Validators.required]
 
     });
+    this.getBuses();
+  }
+  getBuses() {
+    this.busService.getBus().subscribe((data) => {
+      console.log(data)
+      this.busList = data.data;
+    })
   }
 
 
@@ -50,14 +60,14 @@ export class AddUserComponent implements OnInit {
       'has-feedback': this.isFieldValid(form, field)
     };
   }
-  demo(){
+  demo() {
 
     this.userForm.patchValue({
       firstName: "David",
       lastName: "Perera",
-      email:"dav.pe@gmail.com",
-      contactNo:"0714584754",
-      password:"123456"
+      email: "dav.pe@gmail.com",
+      contactNo: "0714584754",
+      password: "123456"
     })
 
   }
@@ -69,7 +79,8 @@ export class AddUserComponent implements OnInit {
       email: this.userForm.value.email,
       contact_no: this.userForm.value.contactNo,
       password: this.userForm.value.password,
-      role:this.userForm.value.userRole,// role
+      role: this.userForm.value.userRole,
+      bus_id: this.userForm.value.busNo,
 
     };
 
@@ -79,7 +90,7 @@ export class AddUserComponent implements OnInit {
         Swal("Sucess!", res.msg, "success");
         this.userForm.reset();
       } else {
-        Swal("Error!",res.msg, "warning");
+        Swal("Error!", res.msg, "warning");
 
       }
 

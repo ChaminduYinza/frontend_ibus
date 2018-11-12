@@ -48,22 +48,16 @@ export class SideNavComponent implements OnInit {
     routerLink: "./User"
   },
   {
-    icon: "insert_chart",
+    icon: "assignment",
     item: "Bus Route",
     routerLink: "./Route"
   },
 
   {
-    icon: "assignment",
+    icon: "insert_chart",
     item: "Bus",
     routerLink: "./Bus"
   },
-
-  // {
-  //   icon: "assignment",
-  //   item: "Generate Schedules",
-  //   routerLink: "./GenerateSchedule"
-  // },
   {
     icon: "assignment",
     item: "Bus Schedules",
@@ -73,11 +67,6 @@ export class SideNavComponent implements OnInit {
     icon: "account_circle",
     item: "Profile",
     routerLink: "./Profile"
-  },
-  {
-    icon: "settings",
-    item: "Settings",
-    routerLink: "./Settings"
   },
   {
     icon: "settings",

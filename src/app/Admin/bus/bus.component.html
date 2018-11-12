@@ -17,11 +17,10 @@
                           mdbWavesEffect>New Bus</button></a>
                   </div>
                   <div class="col">
-                      <!-- <form class="form-inline md-form mr-auto" style="margin-left:15px">
-                          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                          <button class="btn btn-unique btn-rounded btn-sm my-0 waves-light" mdbWavesEffect
-                              type="submit">Search</button>
-                      </form> -->
+                      <mat-select placeholder="Route No" class="form-control">
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let route of routeList" [value]="route._id" (click)="getBusByRouteId(route._id)">{{route.route_no +" "+ route.route_from +" - "+ route.route_to}}</mat-option>
+                      </mat-select>
                   </div>
               </div>
               <table class="table table-striped">
@@ -29,7 +28,6 @@
                       <tr>
                           <th>Bus no</th>
                           <th>Bus type</th>
-                          <!-- <th>Route no</th> -->
                           <th>Capacity</th>
                           <th>Driver</th>
                           <th>Driver contact</th>

@@ -4,7 +4,7 @@
     <div class="modal-content modal-zindex">
       <!--Header-->
       <div class="modal-header text-center">
-        <h4 class="modal-title white-text w-100 font-weight-bold py-2">BUS ALLOCATION</h4>
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2">BUS STATIONS</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" class="white-text">&times;</span>
         </button>
@@ -25,11 +25,11 @@
                 </tr>
               </thead>
               <tbody>
-                <!-- <tr *ngFor=" let row of modalData ">
-                  <td>{{row.time}}</td>
-                  <td>{{row.busList}}</td>
-                  <td>{{row.busList}}</td>
-                </tr> -->
+                <tr *ngFor=" let row of modalData ">
+                  <td>{{row.name}}</td>
+                  <td>{{row.lat}}</td>
+                  <td>{{row.lng}}</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -47,26 +47,18 @@
   <div class="col-md-12">
 
     <div class="card card-cascade narrower">
-      <!--Panel-->
       <div class="view overlay hm-white-slight waves-light " mdbWavesEffect>
         <h1 class="table-heading" style="font-size:200%">Route List</h1>
         <a>
           <div class="mask"></div>
         </a>
       </div>
-      <!-- <h3 class="card-header mdb-color lighten-2 white-text">User List</h3> -->
       <div class="card-body border border-light" style="margin: 15px;">
         <div class="row">
           <div class="col">
             <a routerLink="/Admin/AddRoute"><button mdbBtn type="button" class="btn btn-unique btn-md" style="margin-top: 30px;"
                 mdbWavesEffect>New Route</button></a>
           </div>
-          <!-- <div class="col">
-                        <form class="form-inline md-form mr-auto" style="margin-left:15px">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-unique btn-rounded btn-sm my-0 waves-light" mdbWavesEffect type="submit">Search</button>
-                        </form>
-                    </div> -->
         </div>
         <table class="table table-striped">
           <thead>
@@ -83,7 +75,7 @@
               <td>{{route.route_from}}</td>
               <td>{{route.route_to}}</td>
               <td style="width:200px;">
-                <button (click)="openScheduleModal(row)" type="button" class="btn btn-default px-3 btn-sm" matTooltip="View bus stations"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                <button (click)="openScheduleModal(route.bus_stops)" type="button" class="btn btn-default px-3 btn-sm" matTooltip="View bus stations"><i class="fa fa-eye" aria-hidden="true"></i></button>
                 <button (click)="editRoute(route._id)" type="button" class="btn btn-primary px-3 btn-sm" matTooltip="Edit route"><i class="fa fa-edit"
                     aria-hidden="true"></i></button>
                 <button (click)="deleteRoute(route._id,i)" type="button" class="btn btn-danger px-3 btn-sm" matTooltip="Delete route"><i class="fa fa-trash" aria-hidden="true"></i></button>
@@ -91,11 +83,7 @@
             </tr>
           </tbody>
         </table>
-        <!--Table-->
       </div>
-      
-
-      <!--/.Panel-->
     </div>
   </div>
 </div>
