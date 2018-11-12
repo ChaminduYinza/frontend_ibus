@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild} from '@angular/core';
 import { FormBuilder, AbstractControl, FormGroup, Validators } from '@angular/forms';
 import { RouteServiceService } from '../../../services/route-service.service';
 import { ScheduleServiceService } from '../../../services/schedule-service.service'
@@ -18,6 +18,9 @@ export class GenerateScheduleAdminComponent implements OnInit {
   scheduleForm: FormGroup;
   validTextType: any;
   routeList: any;
+  scheduleData: any;
+  modalData: any = [];
+  @ViewChild("orangeModalSubscription") allcoationModal;
   constructor(private formBuilder: FormBuilder, private routeService: RouteServiceService, private scheduleService: ScheduleServiceService, private router: Router) { }
 
 
@@ -76,6 +79,8 @@ export class GenerateScheduleAdminComponent implements OnInit {
     requestBody.type = "GA";
     requestBody.date = new Date().setHours(0, 0, 0, 0);
     this.scheduleService.generateSchedule(requestBody).subscribe((data) => {
+      console.log(data.data);
+      this.scheduleData =data.data
       this.showAlert('Success', 'Schedule created successfully.', 'success', "btn btn-success");
       this.blockUI.stop();
     }, (error) => {
@@ -122,6 +127,35 @@ export class GenerateScheduleAdminComponent implements OnInit {
         buttonsStyling: false
       }
     )
+  }
+
+  openScheduleModal(data) {
+    var startTime = data.startTime
+    var timeArray = []
+    this.modalData = []
+
+    var date = new Date("October 13, 2099 " + startTime)
+    data.busAllocation.forEach((element) => {
+      date = addMinutes(date, data.fixedInterval)
+      timeArray.push({ startTime: startTime, endTime: date.toString().replace(" GMT+0530 (India Standard Time)", "").split("2099 ")[1] })
+      startTime = date.toString().replace(" GMT+0530 (India Standard Time)", "").split("2099 ")[1]
+    })
+    timeArray.forEach((element, i) => {
+console.log(element)
+
+      this.modalData.push({
+        time: element.startTime + " - " + element.endTime,
+        busList: data.busIDs[i]
+      })
+    });
+
+    console.log(this.modalData)
+
+    function addMinutes(date, minutes) {
+      return new Date(date.getTime() + minutes * 60000);
+    }
+
+    this.allcoationModal.show();
   }
 
 }

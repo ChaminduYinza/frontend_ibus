@@ -35,7 +35,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let user of userList">
+                        <tr *ngFor="let user of userList; let i = index;">
                             <td>{{user.first_name}}</td>
                             <td>{{user.last_name}}</td>
                             <td>{{user.email}}</td>
@@ -43,7 +43,7 @@
                             <td>{{user.status}}</td>
                             <td><button (click)="editUser(user._id)" type="button" class="btn btn-primary px-3 btn-sm"><i
                                         class="fa fa-edit" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-danger px-3 btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                <button (click)="deleteUser(user._id,i)" type="button" class="btn btn-danger px-3 btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button>
                             </td>
                         </tr>
                     </tbody>

@@ -1,0 +1,71 @@
+<div class="schedule-container" style="margin-top:30px;">
+  <div class="col-md-12">
+
+    <!--Card-->
+    <div class="card card-cascade narrower">
+
+      <div class="view overlay hm-white-slight waves-light " mdbWavesEffect>
+        <h1 class="table-heading" style="font-size:200%">User Profile</h1>
+      </div>
+      <div class="card-body border border-light" style="margin: 15px;">
+        <div class="row">
+          <div class="col-md-12">
+
+            <form [formGroup]="userEditForm" class="text-center border border-light p-5">
+
+              <div class="form-row mb-4">
+                <div class="col-md-3">
+                  <strong>First Name</strong>
+                </div>
+                <div class="col-md-5">
+                  <input type="text" class="form-control" formControlName="firstName">
+                </div>
+              </div>
+              <div class="form-row mb-4">
+                <div class="col-md-3">
+                  <strong>Last Name</strong>
+                </div>
+                <div class="col-md-5">
+                  <input type="text" class="form-control" formControlName="lastName">
+                </div>
+              </div>
+              <div class="form-row mb-4">
+                <div class="col-md-3">
+                  <strong>Email</strong>
+                </div>
+                <div class="col-md-5">
+                  <input type="text" class="form-control" formControlName="email">
+                </div>
+              </div>
+              <div class="form-row mb-4">
+                <div class="col-md-3">
+                  <strong>Contact No</strong>
+                </div>
+                <div class="col-md-5">
+                  <input type="text" class="form-control" formControlName="contactNo">
+                </div>
+              </div>
+              <div class="form-row mb-4">
+                <div class="col-md-3">
+                  <strong>User Role</strong>
+                </div>
+                <div class="col-md-5">
+                  <input type="text" class="form-control" formControlName="role" readonly>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+              <button mdbWavesEffect type="submit" (click)="editProfile()" class="btn btn-unique waves-light">Edit</button>
+              <!-- <a class="btn btn-outline-primary waves-light" mdbWavesEffect routerLink="/Admin/ChangePassword" style="font-weight: 600"> Change Password</a> -->
+              <button mdbWavesEffect type="submit" (click)="changePsw(emailID)" class="btn btn-outline-primary waves-light">Change Password</button>
+            </div>
+              <hr>
+
+            </form>
+            <!-- Default form register -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
