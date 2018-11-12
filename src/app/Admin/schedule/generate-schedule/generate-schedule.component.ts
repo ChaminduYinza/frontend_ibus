@@ -1,4 +1,4 @@
-import { Component, OnInit ,ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, AbstractControl, FormGroup, Validators } from '@angular/forms';
 import { RouteServiceService } from '../../../services/route-service.service';
 import { ScheduleServiceService } from '../../../services/schedule-service.service'
@@ -77,10 +77,11 @@ export class GenerateScheduleAdminComponent implements OnInit {
     let requestBody = this.scheduleForm.value;
     requestBody.recreate = false;
     requestBody.type = "GA";
-    requestBody.date = new Date().setHours(0, 0, 0, 0);
+    requestBody.date = new Date();
+    requestBody.date.setDate(requestBody.date.getDate() + 99);
     this.scheduleService.generateSchedule(requestBody).subscribe((data) => {
       console.log(data.data);
-      this.scheduleData =data.data
+      this.scheduleData = data.data
       this.showAlert('Success', 'Schedule created successfully.', 'success', "btn btn-success");
       this.blockUI.stop();
     }, (error) => {
@@ -141,7 +142,7 @@ export class GenerateScheduleAdminComponent implements OnInit {
       startTime = date.toString().replace(" GMT+0530 (India Standard Time)", "").split("2099 ")[1]
     })
     timeArray.forEach((element, i) => {
-console.log(element)
+      console.log(element)
 
       this.modalData.push({
         time: element.startTime + " - " + element.endTime,

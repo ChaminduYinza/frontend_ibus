@@ -63,12 +63,17 @@
                 </div>
                 <div class="md-form col-md-6">
                   <div class="custom-control custom-radio">
-                    <mat-select placeholder="User Role" class="form-control" formControlName="userRole" mdbInputDirective>
+                    <mat-select [(ngModel)]="selectedNav" placeholder="User Role" class="form-control" formControlName="userRole" mdbInputDirective>
                       <mat-option>None</mat-option>
                       <mat-option  *ngFor="let role of userRole" [value]="role">{{role}}</mat-option>
                     </mat-select>
+                    <mat-select *ngIf="selectedNav === 'Driver'" placeholder="Bus No" class="form-control" formControlName="busNo" mdbInputDirective>
+                      <mat-option>None</mat-option>
+                      <mat-option  *ngFor="let bus of busList" [value]="bus._id">{{bus.busNo}}</mat-option>
+                    </mat-select>
                 </div>
               </div>
+              
               </div>
               <button mdbWavesEffect type="submit" (click)="registerUser()" class="btn btn-unique waves-light"
                 [disabled]="!userForm.valid">Save</button>
