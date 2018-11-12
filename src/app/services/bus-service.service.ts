@@ -58,6 +58,7 @@ export class BusService {
           throw (res);
         }));
   }
+  
 
 
   getBusById(bus_id): Observable<any> {

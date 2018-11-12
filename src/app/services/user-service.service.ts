@@ -54,7 +54,6 @@ export class UserService {
     return this.apiService.put('/user/changePassword', credentials)
       .pipe(map(
         data => {
-          this.setAuth(data);
           return data;
         }
       ),

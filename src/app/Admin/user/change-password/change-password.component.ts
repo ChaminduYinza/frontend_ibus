@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, AbstractControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../../../services/user-service.service'
+import Swal from 'sweetalert2'
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-change-password',
@@ -10,8 +13,11 @@ export class ChangePasswordComponent implements OnInit {
 
   passwordChangeForm: FormGroup;
   validTextType: boolean = false;
-
-  constructor(private formBuilder: FormBuilder) { }
+  email_id: any;
+  constructor(private userService: UserService,private formBuilder: FormBuilder,private router: Router, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.params.subscribe(params => this.email_id = params);
+    console.log(this.email_id.email_id)
+   }
 
   ngOnInit() {
     this.passwordChangeForm = this.formBuilder.group({
@@ -38,7 +44,30 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   changePassword(){
-    console.log(this.passwordChangeForm.value.newPsw)
+
+    if(this.passwordChangeForm.value.confrimPsw !=this.passwordChangeForm.value.newPsw){
+
+      Swal("Error!", "Confirm Password did not match !", "warning");
+
+    }else{
+      const query = {
+        "email":this.email_id.email_id,
+        "oldPassword": this.passwordChangeForm.value.currentPsw,
+        "newPassword": this.passwordChangeForm.value.newPsw
+  
+      };
+  
+      this.userService.changePassword(query).subscribe((res) => {
+
+          Swal("Sucess!", res.msg, "success");
+  
+      }, (err) => {
+        Swal("Error!", err.msg, "warning");
+  
+      })
+
+    }
+
   }
 
 }

@@ -21,6 +21,7 @@ import { BusRouteComponent } from './Admin/bus-route/bus-route.component';
 import { UpdateRouteComponent } from './Admin/bus-route/update-route/update-route.component';
 import { PassengerCountPredictionComponent } from './Admin/passenger-count-prediction/passenger-count-prediction.component';
 import { LoginComponent } from './login/login.component'
+import {ProfileComponent} from './Admin/profile/profile.component'
 
 // import { AuthGuardService as AuthGuard } from './services/auth-guard-service.service';
 
@@ -52,7 +53,7 @@ const routes: Routes = [
             { path: 'AddUser', component: AddUserComponent },
             { path: 'User', component: UserComponent },
             { path: 'editUser/:user_id', component: UpdateUserComponent },
-            { path: 'ChangePassword', component: ChangePasswordComponent },
+            { path: 'ChangePassword/:email_id', component: ChangePasswordComponent },
             { path: 'AddBus', component: AddBusComponent },
             { path: 'editBus', component: UpdateBusComponent },
             { path: 'Bus', component: BusComponent },
@@ -60,6 +61,7 @@ const routes: Routes = [
             { path: 'GenerateSchedule', component: GenerateScheduleAdminComponent },
             { path: 'AddRoute', component: AddRouteComponent },
             { path: 'Route', component: BusRouteComponent },
+            { path: 'Profile', component: ProfileComponent },
             { path: 'editRoute/:route_id', component: UpdateRouteComponent },
             { path: 'editBus/:bus_id', component: UpdateBusComponent },
             { path: 'predictionResults', component: PassengerCountPredictionComponent }

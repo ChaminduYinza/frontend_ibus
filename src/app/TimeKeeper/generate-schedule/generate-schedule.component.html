@@ -54,7 +54,7 @@
                     <td>{{row.startTime}}</td>
                     <td>{{row.endTime}}</td>
                     <td>{{row.fixedInterval}} Mins</td>
-                    <td>{{row.noOfBusses}}</td>
+                    <td (click)="openScheduleModal(row)" matTooltip={{row.busNumbers}}>{{row.noOfBusses}}</td>
                   </tr>
                 </tbody>
               </table>

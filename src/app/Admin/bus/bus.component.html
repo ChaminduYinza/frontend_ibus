@@ -35,12 +35,12 @@
                           <th>Driver contact</th>
                           <th>Owner</th>
                           <th>Owner contact</th>
-                          <th>Status</th>
+                          <th>On Going Status</th>
                           <th>Action</th>
                       </tr>
                   </thead>
                   <tbody>
-                      <tr *ngFor="let bus of busList">
+                      <tr *ngFor="let bus of busList;let i = index;">
                           <td>{{bus.busNo}}</td>
                           <td>{{bus.busType}}</td>
                           <!-- <td>{{bus.routeNo}}</td> -->
@@ -51,7 +51,7 @@
                           <td>{{bus.ownerContactNo}}</td>
                           <td>{{bus.onGoingStatus}}</td>
                           <td><button type="button" (click)="editBus(bus._id)" class="btn btn-primary px-3 btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></button>
-                              <button type="button" class="btn btn-danger px-3 btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                              <button type="button" (click)="deleteBus(bus._id,i)" class="btn btn-danger px-3 btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button>
                           </td>
                       </tr>
                   </tbody>

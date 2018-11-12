@@ -56,7 +56,7 @@
 
                   <mat-select placeholder="Route No" class="form-control" formControlName="route_no">
                     <mat-option>None</mat-option>
-                    <mat-option *ngFor="let route of routeList" [value]="route._id">{{route.route_no}}</mat-option>
+                    <mat-option *ngFor="let route of routeList" [value]="route._id">{{route.route_no +" "+ route.route_from +" - "+ route.route_to}}</mat-option>
                   </mat-select>
                 </div>
               </div>
@@ -84,14 +84,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>6.00am - 7.00am</td>
-              <td>30 Mins</td>
-              <td>3</td>
-              <td matTooltip="A Detailed view of how busses are allocated will be shown here">[ 1 , 2 ]</td>
+            <tr *ngFor=" let row of scheduleData ">
+              <td>{{row.startTime+" "+ row.endTime}}</td>
+              <td>{{row.fixedInterval}}Mins</td>
+              <td>{{row.noOfBusses}}</td>
+              <td  matTooltip={{row.busIDs}}>{{row.busAllocation}}</td>
             </tr>
-
-
           </tbody>
         </table>
       </div>

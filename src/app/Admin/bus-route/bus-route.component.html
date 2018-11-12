@@ -1,3 +1,48 @@
+<div mdbModal #orangeModalSubscription="mdb-modal"  class="modal fade" id="orangeModalSubscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-warning" role="document">
+    <!--Content-->
+    <div class="modal-content modal-zindex">
+      <!--Header-->
+      <div class="modal-header text-center">
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2">BUS ALLOCATION</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+        <div class="card card-cascade narrower">
+          <div class="view overlay hm-white-slight waves-light " mdbWavesEffect>
+            <h1 class="table-heading"></h1>
+          </div>
+          <div class="card-body">
+            <table id="contentToConvert1" class="table table-striped ">
+              <thead>
+                <tr>
+                  <th>Bus Station</th>
+                  <th>Latitude</th>
+                  <th>Longitude</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- <tr *ngFor=" let row of modalData ">
+                  <td>{{row.time}}</td>
+                  <td>{{row.busList}}</td>
+                  <td>{{row.busList}}</td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
 <div class="" style="margin-top:35px">
   <div class="col-md-12">
 
@@ -33,21 +78,22 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let route of routeList">
+            <tr *ngFor="let route of routeList; let i = index;">
               <td>{{route.route_no}}</td>
               <td>{{route.route_from}}</td>
               <td>{{route.route_to}}</td>
               <td style="width:200px;">
-                <button type="button" class="btn btn-default px-3 btn-sm" matTooltip="View route in Google map"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                <button (click)="openScheduleModal(row)" type="button" class="btn btn-default px-3 btn-sm" matTooltip="View bus stations"><i class="fa fa-eye" aria-hidden="true"></i></button>
                 <button (click)="editRoute(route._id)" type="button" class="btn btn-primary px-3 btn-sm" matTooltip="Edit route"><i class="fa fa-edit"
                     aria-hidden="true"></i></button>
-                <button type="button" class="btn btn-danger px-3 btn-sm" matTooltip="Delete route"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                <button (click)="deleteRoute(route._id,i)" type="button" class="btn btn-danger px-3 btn-sm" matTooltip="Delete route"><i class="fa fa-trash" aria-hidden="true"></i></button>
               </td>
             </tr>
           </tbody>
         </table>
         <!--Table-->
       </div>
+      
 
       <!--/.Panel-->
     </div>
