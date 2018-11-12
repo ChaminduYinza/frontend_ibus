@@ -70,7 +70,7 @@ export class ScheduleComponent implements OnInit {
   }
 
   generateSchedule() {
-    this.router.navigateByUrl('User/GenerateSchedule')
+    this.router.navigateByUrl('TimeKeeper/GenerateSchedule')
   }
 
   exportAsPDF() {

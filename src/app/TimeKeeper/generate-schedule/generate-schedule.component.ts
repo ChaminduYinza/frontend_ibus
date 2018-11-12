@@ -67,7 +67,7 @@ export class GenerateScheduleComponent implements OnInit {
       // console.log(data)
       if (data.data == config.scheduleCreatedStatus) {
         this.blockUI.stop();
-        this.router.navigateByUrl('User/Schedule')
+        this.router.navigateByUrl('TimeKeeper/Schedule')
         this.showAlert('Success', 'Schedule created successfully.', 'success', "btn btn-success");
       }
     }, (error) => {
@@ -87,7 +87,7 @@ export class GenerateScheduleComponent implements OnInit {
             this.blockUI.start('Resouce allocation is being executing, Please wait!');
             requestBody.recreate = true;
             this.scheduleService.generateSchedule(requestBody).subscribe((data) => {
-              this.router.navigateByUrl('User/Schedule')
+              this.router.navigateByUrl('TimeKeeper/Schedule')
               this.showAlert('Success', 'Schedule created successfully.', 'success', "btn btn-success");
               this.blockUI.stop();
               this.ngOnInit();
