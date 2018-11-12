@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../app/services/user-service.service';
 import { Router } from '@angular/router';
 import { FormBuilder, AbstractControl, FormGroup, Validators } from '@angular/forms';
+import swal from 'sweetalert2';
 
 
 @Component({
@@ -36,10 +37,28 @@ export class LoginComponent implements OnInit {
     this.userService.attemptLogin(loginUser).subscribe((data) => {
       data.data.role == 'Admin' ? this.router.navigateByUrl('Admin/User') : this.router.navigateByUrl('TimeKeeper')
     }, (err) => {
-      console.log(err)
+      this.showAlert('oops!', err.msg, 'error', "btn btn-danger");
     })
 
 
+  }
+
+  /**
+* show alert message
+* @param title 
+* @param message 
+* @param type 
+*/
+  showAlert(title, message, type, button) {
+    swal(
+      {
+        title: title,
+        text: message,
+        type: type,
+        confirmButtonClass: button,
+        buttonsStyling: false
+      }
+    )
   }
 
 }
